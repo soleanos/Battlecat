@@ -1,0 +1,26 @@
+<template name="game">
+
+    <h2>Accueil</h2>
+
+    <form>
+
+        <label>Nom</label><input type="text" name="name" /><br />
+
+        <label>Race</label><input type="text" name="breed" /><br />
+
+        <label>sexe</label>
+        <select name="sex">
+		    <option value="male">male</option>
+		    <option value="female">femelle</option>
+		</select>
+
+        <button type="submit" >Envoyer</button>
+
+    </form>
+
+
+    {{#each cats}}
+		<li><b>{{ name}} {{level}}</b></li>
+	{{/each}}
+
+</template>
