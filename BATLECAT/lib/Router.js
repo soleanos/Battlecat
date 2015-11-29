@@ -11,26 +11,21 @@ Router.route('/', {
 
 });
 
-Router.route('/register', {
 
-    name: "register",
+Router.route('/cats', {
 
-});
-
-Router.route('/play', {
-
-    name: "game",
+    name: "newCat",
 
     data: function(){
 
         var cats = Cats.find();
-
+        var iduser = Meteor.userId();
         
 
         return {
 
-            cats: cats
-
+            cats: cats,
+            iduser : iduser
         };
 
     },
@@ -42,3 +37,5 @@ Router.route('/play', {
     }
 
 });
+
+

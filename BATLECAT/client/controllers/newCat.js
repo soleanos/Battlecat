@@ -1,4 +1,4 @@
-Template.accueil.events({
+Template.newCat.events({
 
     'submit form': function(e){
 

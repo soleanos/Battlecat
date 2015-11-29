@@ -1,7 +1,7 @@
 
 Meteor.publish("allCatsNames", function(){
 
-	return Cats.find({}, {
+	return Cats.find({userId: "aaa"}, {
 
 	    fields: {content: 0}
 
