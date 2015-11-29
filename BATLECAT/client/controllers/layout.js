@@ -9,3 +9,7 @@ Template.mainLayout.events({
 });
 
 accountsUIBootstrap3.setLanguage('fr');
+
+Deps.autorun(function(){
+  Meteor.subscribe('money');
+});

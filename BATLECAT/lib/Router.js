@@ -7,8 +7,41 @@ Router.configure({
 
 Router.route('/', {
 
-    name: "accueil",
+    name: "home",
 
+});
+
+
+Router.route('/market', {
+
+    name: "market",
+
+});
+
+Router.route('/myCats', {
+
+    name: "myCats",
+
+	data: function(){
+
+		var iduser = Meteor.userId();
+        var cats = Cats.find({owner : iduser});
+        
+        
+        return {
+
+            cats: cats,
+            iduser : iduser
+            
+        };
+
+    },
+
+    waitOn: function(){
+
+        return Meteor.subscribe("allCatsNames");
+		
+    }
 });
 
 
@@ -18,23 +51,16 @@ Router.route('/cats', {
 
     data: function(){
 
-        var cats = Cats.find();
-        var iduser = Meteor.userId();
-        
-
+		var iduser = Meteor.userId();
+           
         return {
 
-            cats: cats,
             iduser : iduser
+            
         };
 
     },
 
-    waitOn: function(){
-
-        return Meteor.subscribe("allCatsNames");
-
-    }
 
 });
 

@@ -8,11 +8,15 @@ Template.newCat.events({
 
         var name = $("input[name='name']").val();
 
-        var breed = $("input[name='breed']").val();
+        var breed = $("select[name='breed']").val();
 
-        var sex = $("textarea[name='sex']").val();
+        var sex = $("select[name='sex']").val();
 
         var level = 1;
+
+		var iduser = Meteor.userId();
+		
+		var img = $("input[name='breed']").val();
 
         var cat = {
 
@@ -22,7 +26,11 @@ Template.newCat.events({
 
                 sex : sex,
 
-                level: level
+                level: level,
+                
+                owner: iduser,
+                
+                img:img
 
         }
 
@@ -46,4 +54,9 @@ Template.newCat.events({
 
     }
 
+});
+
+Tracker.autorun(function () {
+    Meteor.subscribe("userData");
+    Meteor.subscribe("allUserData");
 });

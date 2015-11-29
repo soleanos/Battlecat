@@ -1,33 +1,11 @@
 <template name="mainLayout">
-
-   <div class="navbar navbar-default" role="navigation">
-    <div class="navbar-header">
-        <a class="navbar-brand" href="{{pathFor route='accueil'}}">BATLE CAT BETA</a>
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-        </button>
-    </div>
-    <div class="navbar-collapse collapse">
-        <ul class="nav navbar-nav">
-            <li class="active">
-        		 <a href="{{pathFor route='newCat'}}">Mes chats</a>
-            </li>
-        </ul>
-        <ul class="nav navbar-nav navbar-right">
-            {{> loginButtons}}
-        </ul>
-    </div>
-	</div>
-
+	{{> header}}
+	
     <div>
 
         {{> yield}}
-
+		
     </div>
 
-    
 
 </template>
