@@ -14,7 +14,27 @@ Router.route('/', {
 
 Router.route('/market', {
 
-    name: "market",
+	name: "market",
+	data: function(){
+
+        var objetsMarkets = Market.find({});
+        var price = Session.get('price');
+        var breed = Session.get('breed');
+        var quantity = Session.get('quantity');
+        var sexe = Session.get('sexe');
+		
+        return {
+
+            objetsMarkets: objetsMarkets,
+        };
+
+    },
+
+    waitOn: function(){
+
+        return Meteor.subscribe("allObjectsMarket");
+		
+    }
 
 });
 
@@ -31,7 +51,7 @@ Router.route('/myCats', {
         return {
 
             cats: cats,
-            iduser : iduser
+            iduser : iduser,
             
         };
 
@@ -43,6 +63,8 @@ Router.route('/myCats', {
 		
     }
 });
+
+
 
 
 Router.route('/cats', {

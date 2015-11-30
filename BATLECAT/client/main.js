@@ -7,17 +7,42 @@ jQuery(document).ready(function($){
 	//open the quick view panel
 	Template.market.events = {
         "click .cd-trigger" : function(e,t) {
-        e.preventDefault();
-        var selectedImage = $(e.target).parent('.cd-item').children('img'),
+			e.preventDefault();
+			var selectedImage = $(e.target).parent('.cd-item').children('img'),
 			slectedImageUrl = selectedImage.attr('src');
-			console.log(slectedImageUrl);
-		$('body').addClass('overlay-layer');
-		animateQuickView(selectedImage, sliderFinalWidth, maxQuickWidth, 'open');
-
-		//update the visible slider image in the quick view panel
-		//you don't need to implement/use the updateQuickView if retrieving the quick view data with ajax
-		updateQuickView(slectedImageUrl);
-      
+			var idObject = selectedImage.attr('alt');
+	
+			var cat = Market.find({_id : idObject}).fetch();
+			console.log(cat[0]);
+			Session.set("breed", cat[0].breed)
+			Session.set("price", cat[0].price)
+			Session.set("sexe", cat[0].sexe)
+			Session.set("quantity", cat[0].quantity)
+		
+				Template.market.helpers({
+				  price: function () {
+					return cat[0].price;
+				  },
+				  breed: function () {
+					return cat[0].breed;
+				  },
+				  sexe: function () {
+					return cat[0].sexe;
+				  },
+				  quantity: function () {
+					return cat[0].quantity;
+				  },
+				});
+				//~ 
+				
+				$("#lel").attr("src",slectedImageUrl);
+				$('body').addClass('overlay-layer');
+				animateQuickView(selectedImage, sliderFinalWidth, maxQuickWidth, 'open');
+				
+				//update the visible slider image in the quick view panel
+				//you don't need to implement/use the updateQuickView if retrieving the quick view data with ajax
+				//~ updateQuickView(slectedImageUrl);
+			
         }
 	};
 

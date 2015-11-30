@@ -11,6 +11,18 @@ Meteor.publish("allCatsNames", function(){
 
 });
 
+Meteor.publish("allObjectsMarket", function(){
+
+	
+
+	return Market.find({}, {
+
+	    fields: {content: 0}
+
+	});
+
+});
+
 
 
 Meteor.publish('money', function() {
