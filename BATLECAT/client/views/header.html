@@ -11,19 +11,25 @@
 				<span class="icon-bar"></span>
 			</button>
 		</div>
+		
 		<div class="navbar-collapse collapse">
 			<ul class="nav navbar-nav">
-				<li class="active">
-					 <a href="{{pathFor route='myCats'}}">Mes chats</a>
-				</li>
-				
-				<li class="active">
-					 <a href="{{pathFor route='market'}}">Marché</a>
-				</li>
+				{{#if currentUser}}
+					<li class="active">
+						 <a href="{{pathFor route='myCats'}}">Mes chats</a>
+					</li>
+					
+					<li class="active">
+						 <a href="{{pathFor route='market'}}">Marché</a>
+					</li>
+				{{/if}}
 				
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
-				<li class="active" >argent : {{currentUser.money}}</li>
+				{{#if currentUser}}
+					<li class="active" >argent : {{currentUser.money}}</li>
+				{{/if}}
+				
 				{{> loginButtons}}
 			</ul>
 		</div>

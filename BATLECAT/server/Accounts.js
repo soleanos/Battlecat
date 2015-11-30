@@ -26,3 +26,5 @@ Accounts.onCreateUser(function(options, user) {
   user.money = 1000;
   return user;
 });
+
+
