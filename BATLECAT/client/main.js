@@ -5,7 +5,7 @@ jQuery(document).ready(function($){
 		maxQuickWidth = 900;
 
 	//open the quick view panel
-	Template.home.events = {
+	Template.market.events = {
         "click .cd-trigger" : function(e,t) {
         e.preventDefault();
         var selectedImage = $(e.target).parent('.cd-item').children('img'),
