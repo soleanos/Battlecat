@@ -2,12 +2,6 @@
 
 
 
-<!--
-{{> newCat}}
--->
-
-
-
 	<ul class="cd-items cd-container">
 			{{#each objetsMarkets}}
 			<li class="cd-item">
@@ -44,7 +38,33 @@
 				</p>
 				
 				<ul class="cd-item-action">
-					<li><button class="add-to-cart">ACHETER</button></li>						
+					
+					{{#if isASelected objetcSelected }}
+						
+						 <form>
+
+							<label>Choisir un nom : </label><input type="text" name="name" /><br />
+
+							<input type="HIDDEN" name="sex" value ="{{sex}}"/>
+							<input type="HIDDEN" name="breed" value ="{{breed}}"/>
+
+							<label>sexe</label>
+							<!--
+							<select name="sex">
+								<option value="male">male</option>
+								<option value="femelle">femelle</option>
+							</select>
+							-->
+							<br />
+
+							<button class= "add-to-cart" type="submit" >ACHETER</button>
+
+						</form>
+	
+					{{else}}
+						<li><button class="buyObject">CHOISIR</button></li>	
+					{{/if}}
+				
 				</ul> <!-- cd-item-action -->
 			</div> <!-- cd-item-info -->
 			<a href="#0" class="cd-close">Close</a>

@@ -22,10 +22,13 @@ Router.route('/market', {
         var breed = Session.get('breed');
         var quantity = Session.get('quantity');
         var sexe = Session.get('sexe');
+		var objetcSelected = Session.get('objetcSelected');
+		var iduser = Meteor.userId();
 		
         return {
 
             objetsMarkets: objetsMarkets,
+            iduser : iduser
         };
 
     },

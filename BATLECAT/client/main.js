@@ -41,8 +41,28 @@ jQuery(document).ready(function($){
 				
 				//update the visible slider image in the quick view panel
 				//you don't need to implement/use the updateQuickView if retrieving the quick view data with ajax
-				//~ updateQuickView(slectedImageUrl);
+				updateQuickView(slectedImageUrl);
 			
+        },"click .buyObject" : function(e,t) {
+			e.preventDefault();
+			var objetcSelected = true;
+			Session.set("objetcSelected", objetcSelected )
+			
+			Template.market.helpers({
+				  objetcSelected: function () {
+					return true ;
+				  }
+			});
+        },"click .cd-close" : function(e,t) {
+			e.preventDefault();
+			var objetcSelected = false;
+			Session.set("objetcSelected", objetcSelected )
+			
+			Template.market.helpers({
+				  objetcSelected: function () {
+					return false ;
+				  }
+			});
         }
 	};
 

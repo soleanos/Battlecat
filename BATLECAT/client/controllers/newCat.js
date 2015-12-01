@@ -8,9 +8,9 @@ Template.newCat.events({
 
         var name = $("input[name='name']").val();
 
-        var breed = $("select[name='breed']").val();
+        var breed = $("input[name='breed']").val();
 
-        var sex = $("select[name='sex']").val();
+        var sex = $("input[name='sex']").val();
 
         var level = 1;
 
