@@ -1,0 +1,2 @@
+images : 300*250
+http://www166.lunapic.com/editor/

@@ -18,7 +18,7 @@ jQuery(document).ready(function($){
 			Session.set("price", cat[0].price)
 			Session.set("sexe", cat[0].sexe)
 			Session.set("quantity", cat[0].quantity)
-		
+			Session.set("img", cat[0].img)
 				Template.market.helpers({
 				  price: function () {
 					return cat[0].price;
@@ -31,11 +31,11 @@ jQuery(document).ready(function($){
 				  },
 				  quantity: function () {
 					return cat[0].quantity;
-				  },
+				  }, 
 				});
 				//~ 
 				
-				$("#lel").attr("src",slectedImageUrl);
+				$("#image").attr("src",slectedImageUrl);
 				$('body').addClass('overlay-layer');
 				animateQuickView(selectedImage, sliderFinalWidth, maxQuickWidth, 'open');
 				
@@ -63,12 +63,14 @@ jQuery(document).ready(function($){
 					return false ;
 				  }
 			});
-        }
+        },
 	};
 
 	//close the quick view panel
 	$('body').on('click', function(event){
 		if( $(event.target).is('.cd-close') || $(event.target).is('body.overlay-layer')) {
+			var objetcSelected = true;
+			Session.set("objetcSelected", objetcSelected )
 			closeQuickView( sliderFinalWidth, maxQuickWidth);
 		}
 	});

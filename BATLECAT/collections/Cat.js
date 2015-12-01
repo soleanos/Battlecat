@@ -8,11 +8,9 @@ Cats.allow({
 
         if(doc.name == ""  || doc.breed == ""  ){
 
-            throw new Meteor.Error(403, "Vous n'avez pas l'autorisation d'insérer un nouveau post !");
+            throw new Meteor.Error(403, "Vous devez donner un nom a votre chat !");
 
         }
-
-        
 
         return true;
 

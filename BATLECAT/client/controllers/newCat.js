@@ -16,7 +16,7 @@ Template.newCat.events({
 
 		var iduser = Meteor.userId();
 		
-		var img = $("input[name='breed']").val();
+		var img = $("input[name='img']").val();
 
         var cat = {
 
@@ -34,8 +34,6 @@ Template.newCat.events({
 
         }
 
-        
-
         Cats.insert(cat, function(err, id){
 
             if(err){
@@ -46,8 +44,12 @@ Template.newCat.events({
 
             else{
 
-                $("form input, form textarea").val("");
-
+                $("input[name='name']").val("");
+                var usermoney =  Meteor.user().money;
+                var price = Session.get("price");
+                 Meteor.user().money = usermoney - price;
+                Meteor.users.update({_id:Meteor.user()._id}, {$set:{"money":usermoney-price}})
+                console.log(Meteor.user().money);
             }
 
         });
@@ -56,6 +58,35 @@ Template.newCat.events({
 
 });
 
+Template.newCat.helpers({
+  breedInput: function () {
+  
+    var breed = Session.get('breed');
+    
+    return {
+      name: "breed",
+      value: breed
+    }
+  },
+  imgInput: function () {
+  
+    var img = Session.get('img');
+    return {
+      name: "img",
+      value: img
+    }
+  },
+  sexInput: function () {
+  
+    var sex = Session.get('sexe');
+    
+    return {
+      name: "sex",
+      value: sex
+    }
+  }
+
+});
 Tracker.autorun(function () {
     Meteor.subscribe("userData");
     Meteor.subscribe("allUserData");

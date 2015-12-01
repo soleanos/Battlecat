@@ -28,3 +28,7 @@ Meteor.publish("allObjectsMarket", function(){
 Meteor.publish('money', function() {
   return Meteor.users.find({}, {fields: {'money':1}});
 });
+
+Meteor.publish('setmoney', function() {
+  return Meteor.users.update({}, {fields: {'money':1}});
+});

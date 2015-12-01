@@ -1,7 +1,29 @@
 <template name="newCat">
 
-   
-   
+   <form>
 
+		<label>Choisir un nom : </label><input type="text" name="name" /><br />
+
+		<input type="HIDDEN" {{breedInput}}/>
+		<input type="HIDDEN" {{sexInput}}/>
+		<input type="HIDDEN" {{imgInput}}/>
+<!--
+		<input  name="breed" value ="{{breed}}"/>
+-->
+
+<!--
+		<label>sexe</label>
+		<select name="sex">
+			<option value="male">male</option>
+			<option value="femelle">femelle</option>
+		</select>
+-->
+		
+		<br />
+
+		<button class= "add-to-cart" type="submit" >ACHETER</button>
+
+	</form>
+   
 
 </template>

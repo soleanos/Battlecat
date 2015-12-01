@@ -14,7 +14,7 @@ Router.route('/', {
 
 Router.route('/market', {
 
-	name: "market",
+	name: "market",	
 	data: function(){
 
         var objetsMarkets = Market.find({});
@@ -24,7 +24,8 @@ Router.route('/market', {
         var sexe = Session.get('sexe');
 		var objetcSelected = Session.get('objetcSelected');
 		var iduser = Meteor.userId();
-		
+		Meteor.subscribe("setmoney");
+
         return {
 
             objetsMarkets: objetsMarkets,
@@ -77,7 +78,9 @@ Router.route('/cats', {
     data: function(){
 
 		var iduser = Meteor.userId();
-           
+        var breed = Session.get('breed');
+        var sexe = Session.get('sexe');
+
         return {
 
             iduser : iduser

@@ -2,6 +2,7 @@ Market = new Mongo.Collection("market");
 
 
 var nbdoc = Market.find().count();
+
 console.log(nbdoc);
 //~ if (nbdoc == 0){
 	//~ Market.insert( {price:300, type: "cat",breed:"Chat lion",sexe:"female",img:"lion", quantity:10 } )
@@ -18,5 +19,9 @@ console.log(nbdoc);
 	
 	//~ Market.insert( {price:300, type: "cat",breed:"Persan",sexe:"female",img:"persan", quantity:10 } )
 	Market.insert( {price:300, type: "cat",breed:"Persan",sexe:"male",img:"persan", quantity:10 } ) 
- 
+  
+	//~ Market.insert( {price:300, type: "cat",breed:"Grumpy",sexe:"male",img:"grumpy", quantity:10 } ) 
+	Market.insert( {price:300, type: "cat",breed:"Grumpy",sexe:"female",img:"grumpy", quantity:10 } ) 
+	
+	
 //~ } 

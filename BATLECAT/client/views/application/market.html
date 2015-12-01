@@ -9,7 +9,7 @@
 				<img src="img/{{img}}.jpg" alt="{{_id}}">
 				
 
-				 <input type="button" class="cd-trigger" value="Show modal." />
+				 <input type="button" class="cd-trigger" value="Détails" />
 			</li> 	
 			{{/each}}
 	</ul> <!-- cd-items -->
@@ -18,7 +18,7 @@
 			<div class="cd-slider-wrapper">
 				<ul class="cd-slider">
 					
-					<li class="selected"><img id ="lel" src="" alt="Product 1"></li>
+					<li class="selected"><img id ="image" src="" alt="Product 1"></li>
 					
 				</ul> <!-- cd-slider -->
 
@@ -41,26 +41,8 @@
 					
 					{{#if isASelected objetcSelected }}
 						
-						 <form>
-
-							<label>Choisir un nom : </label><input type="text" name="name" /><br />
-
-							<input type="HIDDEN" name="sex" value ="{{sex}}"/>
-							<input type="HIDDEN" name="breed" value ="{{breed}}"/>
-
-							<label>sexe</label>
-							<!--
-							<select name="sex">
-								<option value="male">male</option>
-								<option value="femelle">femelle</option>
-							</select>
-							-->
-							<br />
-
-							<button class= "add-to-cart" type="submit" >ACHETER</button>
-
-						</form>
-	
+						 {{> newCat}}
+							
 					{{else}}
 						<li><button class="buyObject">CHOISIR</button></li>	
 					{{/if}}
