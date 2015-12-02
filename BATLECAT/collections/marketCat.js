@@ -25,3 +25,10 @@ console.log(nbdoc);
 	
 	
 //~ } 
+
+Market.allow({
+  update: function () {
+    return true;
+  }
+  
+});

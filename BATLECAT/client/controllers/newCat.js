@@ -42,7 +42,10 @@ Template.newCat.events({
 				}
 
 				else{
-
+					var quantity = Session.get("quantity");
+					
+					var idObjectMarket = Session.get("idObjectMarket");
+					Market.update({_id: idObjectMarket},{$set:{"quantity":quantity-1}});
 					$("input[name='name']").val("");
 					var usermoney =  Meteor.user().money;
 					if(Meteor.userId()){
@@ -91,5 +94,6 @@ Tracker.autorun(function () {
     Meteor.subscribe("userData");
     Meteor.subscribe("allUserData");
     Meteor.subscribe("usersNames");
+    Meteor.subscribe("marketUpdate");
     
 });

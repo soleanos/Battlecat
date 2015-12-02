@@ -32,6 +32,10 @@ Meteor.publish('money', function() {
   return Meteor.users.find({}, {fields: {'money':1}});
 });
 
+Meteor.publish('marketUpdate', function() {
+  return Market.find({}, {fields: {'quantity':1}});
+});
+
 Meteor.publish("userData", function () {
   return Meteor.users.find(
     {_id: this.userId},

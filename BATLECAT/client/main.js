@@ -14,11 +14,12 @@ jQuery(document).ready(function($){
 	
 			var cat = Market.find({_id : idObject}).fetch();
 			console.log(cat[0]);
-			Session.set("breed", cat[0].breed)
-			Session.set("price", cat[0].price)
-			Session.set("sexe", cat[0].sexe)
-			Session.set("quantity", cat[0].quantity)
-			Session.set("img", cat[0].img)
+			Session.set("breed", cat[0].breed);
+			Session.set("price", cat[0].price);
+			Session.set("sexe", cat[0].sexe);
+			Session.set("quantity", cat[0].quantity);
+			Session.set("img", cat[0].img);
+			Session.set("idObjectMarket", idObject);
 				Template.market.helpers({
 				  price: function () {
 					return cat[0].price;
@@ -31,7 +32,7 @@ jQuery(document).ready(function($){
 				  },
 				  quantity: function () {
 					return cat[0].quantity;
-				  }, 
+				  }
 				});
 				//~ 
 				
