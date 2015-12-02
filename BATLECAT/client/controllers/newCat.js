@@ -4,8 +4,6 @@ Template.newCat.events({
 
         e.preventDefault();
 
-        
-
         var name = $("input[name='name']").val();
 
         var breed = $("input[name='breed']").val();
@@ -34,25 +32,27 @@ Template.newCat.events({
 
         }
 
-        Cats.insert(cat, function(err, id){
+		var price = Session.get("price");
+		if(Meteor.user().money >= price){
+			Cats.insert(cat, function(err, id){
+				if(err){
 
-            if(err){
+					alert(err.reason)
 
-                alert(err.reason)
+				}
 
-            }
+				else{
 
-            else{
-
-                $("input[name='name']").val("");
-                var usermoney =  Meteor.user().money;
-                var price = Session.get("price");
-                 Meteor.user().money = usermoney - price;
-                Meteor.users.update({_id:Meteor.user()._id}, {$set:{"money":usermoney-price}})
-                console.log(Meteor.user().money);
-            }
-
-        });
+					$("input[name='name']").val("");
+					var usermoney =  Meteor.user().money;
+					if(Meteor.userId()){
+						Meteor.users.update({_id: Meteor.userId()},{$set:{"money":usermoney - price }});
+					}
+				}
+			});
+		}else{
+			alert("pas assez d'argent, désolé !");
+		}
 
     }
 
@@ -90,4 +90,6 @@ Template.newCat.helpers({
 Tracker.autorun(function () {
     Meteor.subscribe("userData");
     Meteor.subscribe("allUserData");
+    Meteor.subscribe("usersNames");
+    
 });

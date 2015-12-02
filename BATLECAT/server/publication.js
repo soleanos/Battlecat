@@ -24,11 +24,17 @@ Meteor.publish("allObjectsMarket", function(){
 });
 
 
+Meteor.publish("directory", function () {
+  return Meteor.users.find({}, {fields: {emails: 1, profile: 1}});
+});
 
 Meteor.publish('money', function() {
   return Meteor.users.find({}, {fields: {'money':1}});
 });
 
-Meteor.publish('setmoney', function() {
-  return Meteor.users.update({}, {fields: {'money':1}});
+Meteor.publish("userData", function () {
+  return Meteor.users.find(
+    {_id: this.userId},
+    {fields: {'money': 1}}
+  );
 });

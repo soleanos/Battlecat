@@ -27,4 +27,15 @@ Accounts.onCreateUser(function(options, user) {
   return user;
 });
 
+Meteor.users.allow({
+  update: function (userId, user, fields, modifier) {
+    // can only change your own documents
+    if(user._id === userId)
+    {
+      Meteor.users.update({_id: userId}, modifier);
+      return true;
+    }
+    else return false;
+  }
+});
 
