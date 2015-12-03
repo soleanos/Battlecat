@@ -31,9 +31,10 @@ Template.newCat.events({
                 img:img
 
         }
-
+		var quantity = Session.get("quantity");
 		var price = Session.get("price");
-		if(Meteor.user().money >= price){
+		
+		if(Meteor.user().money >= price && quantity > 1 ){
 			Cats.insert(cat, function(err, id){
 				if(err){
 
@@ -42,7 +43,7 @@ Template.newCat.events({
 				}
 
 				else{
-					var quantity = Session.get("quantity");
+					
 					
 					var idObjectMarket = Session.get("idObjectMarket");
 					Market.update({_id: idObjectMarket},{$set:{"quantity":quantity-1}});
@@ -51,10 +52,18 @@ Template.newCat.events({
 					if(Meteor.userId()){
 						Meteor.users.update({_id: Meteor.userId()},{$set:{"money":usermoney - price }});
 					}
+					$('body').removeClass('overlay-layer');
+					Router.go('/myCats');
 				}
 			});
 		}else{
-			alert("pas assez d'argent, désolé !");
+			if(Meteor.user().money < price){
+				alert("pas assez d'argent, désolé !");
+			}else{
+				alert("Plus disponible dans le marché, désolé ! ");
+
+			}
+			
 		}
 
     }
