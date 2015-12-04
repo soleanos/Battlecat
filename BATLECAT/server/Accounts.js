@@ -25,6 +25,7 @@ Accounts.validateNewUser(function(user) {
 
 Accounts.onCreateUser(function(options, user) {
   user.money = 10000;
+  user.FightRequest = 0;
   return user;
 });
 

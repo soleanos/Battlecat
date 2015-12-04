@@ -1,6 +1,6 @@
  <template name="myCats">
  
- {{#each cats}}
+	{{#each cats}}
 		<div class="col-lg-2 cat">
 			<img src="./img/{{img}}.jpg" alt="arobas" style="width:160px; height:160px;" /> 
 			<div class = "">
@@ -29,9 +29,13 @@
 		</div>
         <div class="modal-body">
 			
-			{{#each users}}
-				{{email}}
-			{{/each}}
+		{{#each user}}
+			{{#if services.resume.loginTokens}} 
+				<a href="#">{{username}}</a> 
+				<a  value = "{{_id}}" class ="open-fight">[DEFIER]</a>  <br />
+			{{/if}}
+		{{/each}}
+  
         </div>
       </div>
     </div>

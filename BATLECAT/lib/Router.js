@@ -35,9 +35,7 @@ Router.route('/market', {
     },
 
     waitOn: function(){
-
         return Meteor.subscribe("allObjectsMarket");
-		
     }
 
 });
@@ -61,9 +59,7 @@ Router.route('/myCats', {
     },
 
     waitOn: function(){
-
-        return Meteor.subscribe("allCatsNames");
-		
+        return Meteor.subscribe("allCats");
     }
 });
 
@@ -81,9 +77,7 @@ Router.route('/cats', {
         var sexe = Session.get('sexe');
 
         return {
-
             iduser : iduser
-            
         };
 
     },
