@@ -67,3 +67,20 @@
         //~ }
     //~ }]
 //~ });
+Accounts.ui.config({
+    requestPermissions: {},
+    extraSignupFields: [{
+        fieldName: 'username',
+        fieldLabel: 'username',
+        inputType: 'text',
+        visible: true,
+        validate: function(value, errorFunction) {
+          if (!value) {
+            errorFunction("Please write your first name");
+            return false;
+          } else {
+            return true;
+          }
+        }
+    }]
+ });
