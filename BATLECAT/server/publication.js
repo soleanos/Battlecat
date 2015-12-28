@@ -14,6 +14,11 @@ Meteor.publish("allObjectsMarket", function(){
 	});
 });
 
+Meteor.publish("fights", function(){
+	return Fight.find({}, {
+	    fields: {content: 0}
+	});
+});
 
 
 //~ Meteor.publish('marketUpdate', function() {
