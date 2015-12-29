@@ -8,7 +8,11 @@ Template.fight.events = {
         "click .closeFightAlert" : function(e,t) {
 			e.preventDefault();
 			$('#fight').modal('hide');
-		}
+		},
+        "click .openFightAlert" : function(e,t) {
+			e.preventDefault();
+			Router.go('/fight');
+		},
 };
 
 	//open the quick view panel

@@ -11,6 +11,10 @@ Router.route('/', {
 
 });
 
+Router.route('/fight', {
+    name: "fightArea",
+});
+
 
 Router.route('/market', {
 
