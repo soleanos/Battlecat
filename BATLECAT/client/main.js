@@ -4,6 +4,13 @@ jQuery(document).ready(function($){
 	var sliderFinalWidth = 400,
 		maxQuickWidth = 900;
 
+Template.fight.events = {
+        "click .closeFightAlert" : function(e,t) {
+			e.preventDefault();
+			$('#fight').modal('hide');
+		}
+};
+
 	//open the quick view panel
 	Template.market.events = {
         "click .cd-trigger" : function(e,t) {

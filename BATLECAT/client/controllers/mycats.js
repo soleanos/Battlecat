@@ -19,14 +19,17 @@ Tracker.autorun(function () {
 Template.myCats.helpers({
 	alertFight: function() {
 		if(Fight.find({"player2": Meteor.userId()}).count()>0){
+			console.log("nombre de combats"+Fight.find({"player2": Meteor.userId()}).count());
+			$("#fight").modal("show");
+			//~ $(".cd-popup").modal("show");
+			//~ $('.cd-popup').addClass('is-visible');
 			return true;
 		}
 	},
 	test: function() {
 			$("#fight").modal("show");
-        $("#chooseEnemy").modal("show");
-
-			console.log("la fenetre doit safficher");
+			//~ $(".cd-popup").modal("show");
+			//~ $('.cd-popup').addClass('is-visible');
 	}
 });
 
