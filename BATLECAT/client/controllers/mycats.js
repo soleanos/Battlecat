@@ -21,21 +21,30 @@ Template.myCats.helpers({
 		if(Fight.find({"player2": Meteor.userId()}).count()>0){
 			console.log("nombre de combats"+Fight.find({"player2": Meteor.userId()}).count());
 			$("#fight").modal("show");
-			//~ $(".cd-popup").modal("show");
-			//~ $('.cd-popup').addClass('is-visible');
 			return true;
 		}
 	},
 	test: function() {
 			$("#fight").modal("show");
-			//~ $(".cd-popup").modal("show");
-			//~ $('.cd-popup').addClass('is-visible');
 	}
 });
 
 Template.chooseEnemy.helpers({
-  user: function(){
-      return Meteor.users.find({"_id":{$not:null}});
-  }
+	user: function(){
+		return Meteor.users.find({"_id":{$not:null}});
+	},
+	usersOnlineCheck: function(){
+		if (this.status.online == true && Meteor.user().username != this.username){
+			return true
+		}else{return false}
+	},
+	userStatusClass: function(){
+		if (this.status.idle)
+			return "label-warning"
+		else if (this.status.online)
+			return "label-success"
+		else
+			return "label-default"
+		}
 });
 

@@ -40,8 +40,8 @@
         <div class="modal-body">
 			
 		{{#each user}}
-			{{#if services.resume.loginTokens}} 
-				<a href="#">{{username}}</a> 
+			{{#if usersOnlineCheck}} 
+				<a href="#" class = "{{userStatusClass}}"> {{username}}</a> 
 				<a  value = "{{_id}}" class ="open-fight">[DEFIER]</a>  <br />
 			{{/if}}
 		{{/each}}
