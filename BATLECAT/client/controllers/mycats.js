@@ -11,10 +11,11 @@
 			}else if(ennemy[0].inFight == 2){
 				alert("Le joueur que vous souhaitez défier recoit déja une demande de combat");
 			}else{
-				Meteor.users.update({_id: idEnnemy},{$set:{"inFight":2}});
+				
 				countMyfights = Fight.find({"player2": Meteor.userId()}).count();
 				if (countMyfights==0){
 					Fight.insert( {player1:Meteor.userId(), player2:idEnnemy,stateFight:"En attente"} )
+					Meteor.users.update({_id: idEnnemy},{$set:{"inFight":2}});
 				}
 			}
 		}
