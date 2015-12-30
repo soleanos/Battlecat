@@ -19,7 +19,7 @@ Tracker.autorun(function () {
 Template.myCats.helpers({
 	alertFight: function() {
 		if(Fight.find({"player2": Meteor.userId()}).count()>0){
-			console.log("nombre de combats"+Fight.find({"player2": Meteor.userId()}).count());
+			//~ console.log("nombre de combats"+Fight.find({"player2": Meteor.userId()}).count());
 			$("#fight").modal("show");
 			return true;
 		}

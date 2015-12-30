@@ -8,6 +8,18 @@ Template.fight.events = {
         "click .closeFightAlert" : function(e,t) {
 			e.preventDefault();
 			$('#fight').modal('hide');
+			myfights = Fight.find({"player2": Meteor.userId()}).fetch();	
+			//~ Fight.remove({'_id':{'$in':myfights}});
+			console.log(myfights)
+			for (fight in myfights){
+				Fight.remove({'_id':myfights[fight]._id});
+				console.log(myfights[fight].player2);
+			}
+			
+			$('#your-modal-id').modal('hide');
+			$('body').removeClass('modal-open');
+			$('.modal-backdrop').remove();	
+
 		},
         "click .openFightAlert" : function(e,t) {
 			e.preventDefault();

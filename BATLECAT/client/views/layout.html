@@ -7,5 +7,25 @@
 		
     </div>
 
+	{{#if alertFight}} 
+		{{> fight}}
+		{{test}}
+	{{/if}}
+	
+</template>
+
+<template name="fight">
+
+  <div class="modal fade in" id="fight" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+       <div class="cd-popup-container">
+			<p>Un joueur souhaite vous défier, accepter ? </p>
+			<ul class="cd-buttons">
+				<li><a class ="openFightAlert" href="#">Oui</a></li>
+				<li><a class ="closeFightAlert" href="#">Non</a></li>
+			</ul>
+		</div>  
+    </div>
+  </div>
 
 </template>
