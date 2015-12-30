@@ -1,5 +1,5 @@
 Meteor.publish('money', function() {
-  return Meteor.users.find({}, {fields: {'money':1,'username':1,'services': 1,'status':1}});
+  return Meteor.users.find({}, {fields: {'money':1,'username':1,'services': 1,'status':1,'inFight':1}});
 });
 
 Meteor.publish("allCats", function(){

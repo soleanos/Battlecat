@@ -5,9 +5,18 @@
         },"click .open-fight" : function(e,t) {
 			e.preventDefault();
 			var idEnnemy = $(e.target).attr('value');
-			alert(idEnnemy);
-			Meteor.users.update({_id: idEnnemy},{$set:{"FightRequest":1}});
-			Fight.insert( {player1:Meteor.userId(), player2:idEnnemy} )
+			ennemy = Meteor.users.find({_id: idEnnemy}).fetch();
+			if(ennemy[0].inFight == 1){
+				alert("Le joueur que vous souhaitez défier est déja en combat..");
+			}else if(ennemy[0].inFight == 2){
+				alert("Le joueur que vous souhaitez défier recoit déja une demande de combat");
+			}else{
+				Meteor.users.update({_id: idEnnemy},{$set:{"inFight":2}});
+				countMyfights = Fight.find({"player2": Meteor.userId()}).count();
+				if (countMyfights==0){
+					Fight.insert( {player1:Meteor.userId(), player2:idEnnemy,stateFight:"En attente"} )
+				}
+			}
 		}
  };
 

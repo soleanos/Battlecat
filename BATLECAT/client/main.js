@@ -7,22 +7,29 @@ jQuery(document).ready(function($){
 Template.fight.events = {
         "click .closeFightAlert" : function(e,t) {
 			e.preventDefault();
-			$('#fight').modal('hide');
+		
 			myfights = Fight.find({"player2": Meteor.userId()}).fetch();	
-			//~ Fight.remove({'_id':{'$in':myfights}});
-			console.log(myfights)
+			Meteor.users.update({_id: myfights[0].player1},{$set:{"inFight":0}});
+			
 			for (fight in myfights){
 				Fight.remove({'_id':myfights[fight]._id});
-				console.log(myfights[fight].player2);
 			}
 			
-			$('#your-modal-id').modal('hide');
+			$('#fight').modal('hide');
 			$('body').removeClass('modal-open');
 			$('.modal-backdrop').remove();	
+			
+			Meteor.users.update({_id: Meteor.userId()},{$set:{"inFight":0}});
+			
 
 		},
         "click .openFightAlert" : function(e,t) {
 			e.preventDefault();
+			myfights = Fight.find({"player2": Meteor.userId()}).fetch();
+			
+			Meteor.users.update({_id: myfights[0].player1},{$set:{"inFight":1}});
+			Meteor.users.update({_id: Meteor.userId()},{$set:{"inFight":1}});
+			Fight.update({_id: myfights[0]._id},{$set:{"stateFight":"En cours"}});
 			Router.go('/fight');
 		},
 };

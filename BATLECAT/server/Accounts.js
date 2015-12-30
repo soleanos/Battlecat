@@ -32,7 +32,7 @@ Accounts.onCreateUser(function(options, user) {
 Meteor.users.allow({
   update: function (userId, user, fields, modifier) {
     // can only change your own documents
-    if(user._id === userId)
+    if(user._id == userId || fields =="inFight")
     {
       Meteor.users.update({_id: userId}, modifier);
       return true;

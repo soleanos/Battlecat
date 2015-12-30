@@ -53,7 +53,6 @@ Router.route('/myCats', {
 		var iduser = Meteor.userId();
         var cats = Cats.find({owner : iduser});
         var users = Meteor.users.find({});
-        console.log(users);
         return {
             cats: cats,
             iduser : iduser,
