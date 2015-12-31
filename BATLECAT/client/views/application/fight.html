@@ -2,5 +2,34 @@
 <template name="fightArea">
 	COMBAT EN COURS
 	<input type="button" class="leave-fight" value="Quitter le combat" />
+	
+	{{#if verifSurrend}} 
+		{{> surrend}}
+	{{else}}
+		{{> game}}
+	{{/if}}
+	
+</template>
 
+<template name="surrend">
+	Votre adversaire a abandonné :'( gg ! 
+</template>
+
+<template name="game">
+	
+	<div class="row">
+		<div class="col-xs-4 player1Infos">Infos joueur 1</div>
+		<div class="col-xs-4 catPhoto">PhotoChat</div>
+	</div>
+	
+	<div class="row">
+		<div class="col-xs-4 chat">Discussion</div>
+		<div class="col-xs-8 logs">Déroulement du combat</div>
+		<div class="col-xs-8 actions">Mes attaques</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-4 player2Infos">Infos joueur 1</div>
+		<div class="col-xs-4 catPhoto">PhotoChat</div>
+	</div>
+	
 </template>

@@ -32,7 +32,7 @@ Template.mainLayout.helpers({
 			if(Fight.find({"player2": Meteor.userId()}).count() && myfights[0].stateFight != "end"){
 				$("#fight").modal("show");
 				return true;
-			}
+			}else{return false}
 		}
 	},
 	test: function() {
