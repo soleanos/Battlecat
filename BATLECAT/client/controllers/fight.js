@@ -1,6 +1,5 @@
  Template.fightArea.events = {
         "click .leave-fight" : function(e,t) {
-			e.preventDefault();
 			myfights = Fight.find({"player2": Meteor.userId()}).fetch();
 			if(myfights == ""){
 				myfights = Fight.find({"player1": Meteor.userId()}).fetch();
@@ -15,7 +14,7 @@
         }
  };
 
-Template.mainLayout.helpers({
+Template.fightArea.helpers({
 	verifSurrend: function() {
 			myfights = Fight.find({"player2": Meteor.userId()}).fetch();
 			if(myfights == ""){
