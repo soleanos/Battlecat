@@ -20,7 +20,7 @@ Template.fightArea.helpers({
 			if(myfights == ""){
 				myfights = Fight.find({"player1": Meteor.userId()}).fetch();
 			}
-			if(myfights[0].stateFight == "end"){return true }else{return false;}
+			if(myfights[0].stateFight == "end"){return true }
 	},
 
 });

@@ -14,7 +14,7 @@
 				
 				countMyfights = Fight.find({"player2": Meteor.userId()}).count();
 				if (countMyfights==0){
-					Fight.insert( {player1:Meteor.userId(), player2:idEnnemy,stateFight:"En attente"} )
+					Fight.insert( {player1:Meteor.userId(), player2:idEnnemy,stateFight:"En attente",leader:idEnnemy} )
 					Meteor.users.update({_id: idEnnemy},{$set:{"inFight":2}});
 				}
 			}
