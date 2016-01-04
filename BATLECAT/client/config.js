@@ -26,10 +26,9 @@ Tracker.autorun(function () {
             idleOnBlur: true
             });
         } catch(err) {
-           console.log(err);
+           //~ console.log(err);
         }
     } else {
         UserStatus.stopMonitor();
     }
 });
-

@@ -3,7 +3,8 @@ Template.game.helpers({
 		myFight = Fight.findOne({"player2": Meteor.userId()});
 		if(!myFight){myFight = Fight.findOne({"player1": Meteor.userId()});}
 		
-		if(myFight.leader == Meteor.userId()){
+		var leader = myFight && myFight.leader;
+		if(leader == Meteor.userId()){
 			return true
 		}
 	}

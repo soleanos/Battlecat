@@ -20,22 +20,25 @@ Template.mainLayout.helpers({
 			$('.modal-backdrop').remove();
 		}else{
 			
-			var mySelf = Meteor.users.find({_id: Meteor.userId()}).fetch();
-			var checkIfIvFight = Fight.find({"player2": Meteor.userId()});
-			if (checkIfIvFight != ""){
-				if(mySelf[0].inFight==1){
-					Router.go('/fight');
-				}
+			var mySelf = Meteor.users.findOne({_id: Meteor.userId()});
+			var inFight = mySelf && mySelf.inFight;
+			var myFight = Fight.findOne({"player2": Meteor.userId()});
+						
+			if(inFight==1){
+				Router.go('/fight');
 			}
-			myfights = Fight.find({"player2": Meteor.userId()}).fetch();
-
-			if(Fight.find({"player2": Meteor.userId()}).count() && myfights[0].stateFight != "end"){
+		
+			var stateFight = myFight && myFight.stateFight;
+			if(myFight && stateFight != "end"){
 				$("#fight").modal("show");
 				return true;
-			}else{return false}
+			}else{
+				return false
+			}
 		}
 	},
 	test: function() {
 			$("#fight").modal("show");
 	}
 });
+

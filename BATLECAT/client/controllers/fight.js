@@ -16,11 +16,15 @@
 
 Template.fightArea.helpers({
 	verifSurrend: function() {
-			myfights = Fight.find({"player2": Meteor.userId()}).fetch();
-			if(myfights == ""){
-				myfights = Fight.find({"player1": Meteor.userId()}).fetch();
+			myfights = Fight.findOne({"player2": Meteor.userId()});
+			
+			
+			if(!myfights){
+				myfights = Fight.findOne({"player1": Meteor.userId()});
 			}
-			if(myfights[0].stateFight == "end"){return true }
+			stateFight = myfights && myfights.stateFight;
+			
+			if(stateFight == "end"){return true }
 	},
 
 });
