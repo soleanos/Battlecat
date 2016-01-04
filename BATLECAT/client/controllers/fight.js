@@ -26,5 +26,8 @@ Template.fightArea.helpers({
 			
 			if(stateFight == "end"){return true }
 	},
+	myCatName: function() {
+		return Session.get('myCatFight');
+	},
 
 });

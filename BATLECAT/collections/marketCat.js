@@ -1,7 +1,7 @@
 Market = new Mongo.Collection("market");
 
 
-var nbdoc = Market.find().count();
+var nbdoc = Market.find();
 
 console.log(nbdoc);
 //~ if (nbdoc == 0){

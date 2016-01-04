@@ -32,3 +32,5 @@ Tracker.autorun(function () {
         UserStatus.stopMonitor();
     }
 });
+
+Meteor.subscribe("allCats")

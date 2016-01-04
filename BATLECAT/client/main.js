@@ -29,6 +29,17 @@ Template.fight.events = {
 			
 			Meteor.users.update({_id: myfights[0].player1},{$set:{"inFight":1}});
 			Meteor.users.update({_id: Meteor.userId()},{$set:{"inFight":1}});
+			
+			catsPlayer1 = Cats.find({owner : myfights[0].player1 }).fetch();
+			for (cat in catsPlayer1){
+				Cats.update({_id: catsPlayer1[cat]._id },{$set:{"hp":100}});
+			}
+			
+			catsPlayer2 = Cats.find({owner : Meteor.userId() }).fetch();
+			for (cat in catsPlayer2){
+				Cats.update({_id: catsPlayer2[cat]._id },{$set:{"hp":100}});
+			}
+				
 			Fight.update({_id: myfights[0]._id},{$set:{"stateFight":"En cours"}});
 			Router.go('/fight');
 		},
@@ -43,7 +54,6 @@ Template.fight.events = {
 			var idObject = selectedImage.attr('alt');
 	
 			var cat = Market.find({_id : idObject}).fetch();
-			console.log(cat[0]);
 			Session.set("breed", cat[0].breed);
 			Session.set("price", cat[0].price);
 			Session.set("sexe", cat[0].sexe);

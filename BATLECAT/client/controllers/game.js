@@ -7,6 +7,7 @@ Template.game.helpers({
 		if(leader == Meteor.userId()){
 			return true
 		}
+		
 	}
 		
 });

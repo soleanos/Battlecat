@@ -1,7 +1,10 @@
  Template.myCats.events = {
         "click .open-modal" : function(e,t) {
         e.preventDefault();
+        idCatSelectionned = $(e.target).attr('value');
+        Session.set("myCatFight", idCatSelectionned);
         $("#chooseEnemy").modal("show");
+        
         },"click .open-fight" : function(e,t) {
 			e.preventDefault();
 			var idEnnemy = $(e.target).attr('value');
