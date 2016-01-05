@@ -26,22 +26,6 @@ Template.fightArea.helpers({
 			
 			if(stateFight == "end"){return true }
 	},
-	myCat: function() {
-			myFigth = Fight.findOne({"player2": Meteor.userId()});
-		
-			if(myFigth){
-				catPlayer2 = myFigth && myFigth.catPlayer2;
-				kitty = Cats.findOne({"_id": catPlayer2 });
-				return kitty;
-
-			}else{
-				myFigth = Fight.findOne({"player1": Meteor.userId()});
-				catPlayer1 = myFigth && myFigth.catPlayer1;
-				kitty = Cats.findOne({"_id": catPlayer1});
-				return kitty;
-			}
-			
-	},
 	needIChooseCat: function() {
 		myFight = Fight.findOne({"player2": Meteor.userId()});		
 		if(myFight){
