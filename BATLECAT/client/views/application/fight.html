@@ -7,9 +7,14 @@
 	{{#if verifSurrend}} 
 		{{> surrend}}
 	{{else}}
-		{{> game}}
-		{{myCatName}}
+		{{#if needIChooseCat}} 
+			{{> chooseCat}}
+		{{else}}
+			{{myCat.name}}
+			{{> game}}
+		{{/if}}
 	{{/if}}
+	
 	
 </template>
 
@@ -33,11 +38,19 @@
 		<div class="col-xs-4 player2Infos">Infos joueur 1</div>
 		<div class="col-xs-4 catPhoto">PhotoChat</div>
 	</div>
-	
+		
 	{{#if amILeader}}
 		C'est a vous de jouer !! 
 	{{/if}}
 	
-	
-	
+</template>
+
+<template name="chooseCat">
+	<select class="selectCat" name="select">
+		<option value=""  >SELECTIONNER UN CHAT</option>
+		{{#each allMyCats}}
+			<option value={{_id}}>{{name}} ( {{breed}} niveau {{level}}</option> 
+		{{/each}}	 
+	</select>
+	<input type="button" class="valid-cat" value="VALIDER LE CHAT" />
 </template>

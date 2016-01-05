@@ -8,6 +8,5 @@ Template.game.helpers({
 			return true
 		}
 		
-	}
-		
+	},	
 });

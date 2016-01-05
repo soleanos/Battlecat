@@ -26,8 +26,47 @@ Template.fightArea.helpers({
 			
 			if(stateFight == "end"){return true }
 	},
-	myCatName: function() {
-		return Session.get('myCatFight');
+	myCat: function() {
+			myFigth = Fight.findOne({"player2": Meteor.userId()});
+		
+			if(myFigth){
+				catPlayer2 = myFigth && myFigth.catPlayer2;
+				kitty = Cats.findOne({"_id": catPlayer2 });
+				return kitty;
+
+			}else{
+				myFigth = Fight.findOne({"player1": Meteor.userId()});
+				catPlayer1 = myFigth && myFigth.catPlayer1;
+				kitty = Cats.findOne({"_id": catPlayer1});
+				return kitty;
+			}
+			
 	},
+	needIChooseCat: function() {
+		myFight = Fight.findOne({"player2": Meteor.userId()});		
+		if(myFight){
+			if (!myFight.catPlayer2){
+				return true;
+			}
+		}
+	}
 
 });
+
+Template.chooseCat.helpers({
+	allMyCats: function() {
+		cats = Cats.find({owner : Meteor.userId()});
+		return cats;	
+	},
+});
+
+ Template.chooseCat.events = {
+        "click .valid-cat" : function(e,t) {
+			myFight = Fight.findOne({"player2": Meteor.userId()});
+			catId = $('.selectCat').val();
+			if(catId){
+				Fight.update({_id: myFight._id},{$set:{"catPlayer2":catId}});
+			}
+			
+        }
+ };
