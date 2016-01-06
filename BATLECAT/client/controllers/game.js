@@ -25,4 +25,20 @@ Template.game.helpers({
 			}
 			
 	},	
+	ennemyCat: function() {
+			myFigth = Fight.findOne({"player2": Meteor.userId()});
+		
+			if(myFigth){
+				catPlayerEnnemy = myFigth && myFigth.catPlayer1;
+				kitty = Cats.findOne({"_id": catPlayerEnnemy });
+				return kitty;
+
+			}else{
+				myFigth = Fight.findOne({"player1": Meteor.userId()});
+				catPlayerEnnemy = myFigth && myFigth.catPlayer2;
+				kitty = Cats.findOne({"_id": catPlayerEnnemy});
+				return kitty;
+			}
+			
+	},	
 });

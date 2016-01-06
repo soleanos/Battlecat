@@ -24,3 +24,18 @@
     padding-bottom: 12px;
   }
 }
+
+.joueur1{
+height:300px;
+ background-color: blue;
+}
+.joueur2{
+height:300px;
+ background-color: yellow;
+}
+
+.midle{
+height:100px;
+ background-color: red;
+}
+
