@@ -20,6 +20,12 @@ Meteor.publish("fights", function(){
 	});
 });
 
+Meteor.publish("fightsLogs", function(){
+	return FightLogs.find({}, {
+	    fields: {content: 0}
+	});
+});
+
 
 
 //~ Meteor.publish('marketUpdate', function() {

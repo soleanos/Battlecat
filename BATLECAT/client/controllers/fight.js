@@ -49,6 +49,7 @@ Template.chooseCat.helpers({
 			catId = $('.selectCat').val();
 			if(catId){
 				Fight.update({_id: myFight._id},{$set:{"catPlayer2":catId}});
+				FightLogs.insert( {fightId:myFight._id,player1:myFight.player1,player2:myFight.player2,message: "L'adversaire choisit son attaque...."} )
 			}
 			
         }

@@ -34,3 +34,4 @@ Tracker.autorun(function () {
 });
 
 Meteor.subscribe("allCats")
+Meteor.subscribe("fightsLogs")

@@ -55,18 +55,30 @@ Template.game.helpers({
 				return myEnnemy;
 			}		
 	},
-	myFigthLogs: function() {
+	myFigthLog: function() {
 			myFigth = Fight.findOne({"player2": Meteor.userId()});
 	
 			if(myFigth){
-				myFigthLogs = FightLogs.find({"fightId": myFigth._id}).fetch();
-				console.log(myFigthLogs[0]);
-				return myFigthLogs;
+				idFight = myFigth && myFigth._id;
+				myFigthLogs = FightLogs.find({"fightId": idFight}).fetch();
+				
+				for (log in myFigthLogs){
+					if(log == myFigthLogs.length-1){
+						lastLog = myFigthLogs[log];
+						return lastLog;
+					}
+				}
 			}else{
 				myFigth = Fight.findOne({"player1": Meteor.userId()});
-				myFigthLogs = FightLogs.find().fetch();
-				console.log(myFigthLogs);
-				return myFigthLogs;
+				idFight = myFigth && myFigth._id;
+				myFigthLogs = FightLogs.find({"fightId": idFight}).fetch();
+				
+				for (log in myFigthLogs){
+					if(log == myFigthLogs.length-1){
+						lastLog = myFigthLogs[log];
+						return lastLog;
+					}
+				}
 			}		
 	},
 			
