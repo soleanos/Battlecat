@@ -27,6 +27,7 @@ Template.fight.events = {
 			e.preventDefault();
 			myfights = Fight.find({"player2": Meteor.userId()}).fetch();
 			
+			FightLogs.insert( {fightId:myfights[0]._id,player1:myfights[0].player1,player2:myfights[0].player2,message: "En attente de l'adversaire, il choisit son chat."} )
 			Meteor.users.update({_id: myfights[0].player1},{$set:{"inFight":1}});
 			Meteor.users.update({_id: Meteor.userId()},{$set:{"inFight":1}});
 			

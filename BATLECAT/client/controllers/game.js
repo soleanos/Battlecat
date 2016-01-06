@@ -41,4 +41,33 @@ Template.game.helpers({
 			}
 			
 	},	
+	ennemy: function() {
+			myFigth = Fight.findOne({"player2": Meteor.userId()});
+		
+			if(myFigth){
+				ennemy = myFigth && myFigth.player1;
+				myEnnemy = Meteor.users.findOne({"_id":ennemy});
+				return myEnnemy;
+			}else{
+				myFigth = Fight.findOne({"player1": Meteor.userId()});
+				ennemy = myFigth && myFigth.player2;
+				myEnnemy = Meteor.users.findOne({"_id":ennemy});
+				return myEnnemy;
+			}		
+	},
+	myFigthLogs: function() {
+			myFigth = Fight.findOne({"player2": Meteor.userId()});
+	
+			if(myFigth){
+				myFigthLogs = FightLogs.find({"fightId": myFigth._id}).fetch();
+				console.log(myFigthLogs[0]);
+				return myFigthLogs;
+			}else{
+				myFigth = Fight.findOne({"player1": Meteor.userId()});
+				myFigthLogs = FightLogs.find().fetch();
+				console.log(myFigthLogs);
+				return myFigthLogs;
+			}		
+	},
+			
 });
