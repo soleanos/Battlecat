@@ -27,15 +27,49 @@
 
 .joueur1{
 height:300px;
+/*
  background-color: blue;
+*/
+ border-width:1px;
+ border-style:dotted;
+ border-color:black
 }
 .joueur2{
 height:300px;
+/*
  background-color: yellow;
+*/
+ border-width:1px;
+ border-style:dotted;
+ border-color:black
 }
 
 .midle{
 height:100px;
+/*
  background-color: red;
+*/
+ border-width:1px;
+ border-style:dotted;
+ border-color:black
 }
 
+.player1Infos{
+top:215px;
+float:right;
+
+}
+
+.player2Infos{
+top:5%;
+}
+
+.catPhotoPlayer2{
+margin-top:2%;
+margin-left:40%;
+}
+
+.catPhotoPlayer1{
+margin-top:6%;
+margin-left:23.5%;
+}

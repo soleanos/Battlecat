@@ -17,8 +17,7 @@
 Template.fightArea.helpers({
 	verifSurrend: function() {
 			myfights = Fight.findOne({"player2": Meteor.userId()});
-			
-			
+				
 			if(!myfights){
 				myfights = Fight.findOne({"player1": Meteor.userId()});
 			}
