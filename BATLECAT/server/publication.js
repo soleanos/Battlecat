@@ -27,6 +27,11 @@ Meteor.publish("fightsLogs", function(){
 });
 
 
+Meteor.publish("chatMessages", function(){
+	return Chat.find({}, {
+	    fields: {content: 0}
+	});
+});
 
 //~ Meteor.publish('marketUpdate', function() {
   //~ return Market.find({}, {fields: {'quantity':1}});

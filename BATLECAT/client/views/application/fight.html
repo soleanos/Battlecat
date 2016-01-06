@@ -31,7 +31,10 @@
 	</div>
 	
 	<div class="row midle">
-		<div class="col-xs-4 chat">Discussion</div>
+		<div class="col-xs-4 chat">
+		Discussion<br/>
+		{{> chat}}
+		</div>
 		<div class="col-xs-8 logs">
 			
 			{{myFigthLog.message}}
@@ -59,4 +62,11 @@
 		{{/each}}	 
 	</select>
 	<input type="button" class="valid-cat" value="VALIDER LE CHAT" />
+</template>
+
+<template name="chat">
+	<input type="text" class ="inputChat" value="" /> <br/>
+	{{#each messages}}
+		{{author}} : {{message}} <br/>
+	{{/each}}
 </template>

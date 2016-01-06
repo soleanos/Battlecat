@@ -43,7 +43,7 @@ Template.chooseCat.helpers({
 	},
 });
 
- Template.chooseCat.events = {
+Template.chooseCat.events = {
         "click .valid-cat" : function(e,t) {
 			myFight = Fight.findOne({"player2": Meteor.userId()});
 			catId = $('.selectCat').val();
@@ -54,3 +54,5 @@ Template.chooseCat.helpers({
 			
         }
  };
+
+
