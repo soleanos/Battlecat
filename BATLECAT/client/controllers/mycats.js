@@ -33,7 +33,6 @@ Tracker.autorun(function () {
 Template.myCats.helpers({
 	alertFight: function() {
 		if(Fight.find({"player2": Meteor.userId()}).count()>0){
-			//~ console.log("nombre de combats"+Fight.find({"player2": Meteor.userId()}).count());
 			$("#fight").modal("show");
 			return true;
 		}
@@ -47,11 +46,11 @@ Template.chooseEnemy.helpers({
 	user: function(){
 		return Meteor.users.find({"_id":{$not:null}});
 	},
-	usersOnlineCheck: function(){
-		if (this.status.online == true && Meteor.user().username != this.username){
-			return true
-		}else{return false}
-	},
+	//~ usersOnlineCheck: function(){
+		//~ if (this.status.online == true && Meteor.user().username != this.username){
+			//~ return true
+		//~ }else{return false}
+	//~ },
 	userStatusClass: function(){
 		if (this.status.idle)
 			return "label-warning"

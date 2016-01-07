@@ -34,15 +34,13 @@ Template.newCat.events({
 		var quantity = Session.get("quantity");
 		var price = Session.get("price");
 		
-		if(Meteor.user().money >= price && quantity > 1 ){
+		if(Meteor.user().money >= price && quantity >= 1 ){
 			Cats.insert(cat, function(err, id){
 				if(err){
 
 					alert(err.reason)
 
-				}
-
-				else{
+				}else{
 					
 					
 					var idObjectMarket = Session.get("idObjectMarket");

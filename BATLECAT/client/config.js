@@ -33,6 +33,8 @@ Tracker.autorun(function () {
     }
 });
 
-Meteor.subscribe("allCats")
-Meteor.subscribe("fightsLogs")
-Meteor.subscribe("chatMessages")
+Meteor.subscribe("allCats");
+Meteor.subscribe("fightsLogs");
+Meteor.subscribe("chatMessages");
+Meteor.subscribe("catBreed");
+Meteor.subscribe("allObjectsMarket");

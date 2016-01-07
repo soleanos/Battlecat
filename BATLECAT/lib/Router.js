@@ -37,11 +37,6 @@ Router.route('/market', {
         };
 
     },
-
-    waitOn: function(){
-        return Meteor.subscribe("allObjectsMarket");
-    }
-
 });
 
 Router.route('/myCats', {
@@ -60,10 +55,6 @@ Router.route('/myCats', {
         };
 
     },
-
-    waitOn: function(){
-        return Meteor.subscribe("allCats");
-    }
 });
 
 
@@ -85,6 +76,12 @@ Router.route('/cats', {
 
     },
 
+
+});
+
+Router.route('/updateBd', {
+
+    name: "updateBd",
 
 });
 

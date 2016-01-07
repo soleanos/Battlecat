@@ -33,6 +33,12 @@ Meteor.publish("chatMessages", function(){
 	});
 });
 
+Meteor.publish("catBreed", function(){
+	return Breed.find({}, {
+	    fields: {content: 0}
+	});
+});
+
 //~ Meteor.publish('marketUpdate', function() {
   //~ return Market.find({}, {fields: {'quantity':1}});
 //~ });

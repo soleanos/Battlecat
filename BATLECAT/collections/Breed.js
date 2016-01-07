@@ -1,6 +1,6 @@
-Market = new Mongo.Collection("market");
+Breed = new Mongo.Collection("breed");
 
-Market.allow({
+Breed.allow({
   update: function () {
     return true;
   },
