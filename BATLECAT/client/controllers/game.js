@@ -15,7 +15,6 @@ Template.game.helpers({
 			if(myFigth){
 				catPlayer2 = myFigth && myFigth.catPlayer2;
 				kitty = Cats.findOne({"_id": catPlayer2 });
-				console.log(kitty);
 				return kitty;
 
 			}else{
@@ -140,6 +139,11 @@ function RepercuterAttaque(e,t) {
 		
 		Fight.update({_id: myFigth._id},{$set:{"leader":ennemy}});
 		newHps = ennemyCat.hp-dommages
+		if(newHps<0){
+			newHps = 0;
+		}
+		
+		console.log(newHps);
 		Cats.update({_id: ennemyCat._id },{$set:{"hp":newHps}});
 		FightLogs.insert( {fightId:myFigth._id,player1:myFigth.player1,player2:myFigth.player2,message: messageCombat} )
 		
