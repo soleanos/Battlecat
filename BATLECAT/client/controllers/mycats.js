@@ -46,11 +46,11 @@ Template.chooseEnemy.helpers({
 	user: function(){
 		return Meteor.users.find({"_id":{$not:null}});
 	},
-	//~ usersOnlineCheck: function(){
-		//~ if (this.status.online == true && Meteor.user().username != this.username){
-			//~ return true
-		//~ }else{return false}
-	//~ },
+	usersOnlineCheck: function(){
+		if (this.status.online == true && Meteor.user().username != this.username){
+			return true
+		}else{return false}
+	},
 	userStatusClass: function(){
 		if (this.status.idle)
 			return "label-warning"

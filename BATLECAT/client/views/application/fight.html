@@ -37,21 +37,30 @@
 		</div>
 		<div class="col-xs-8 logs">
 			
-			{{myFigthLog.message}}
+			{{myFigthLog.message}}<br/>
+			{{#if amILeader}}
+			C'est a vous de jouer !! 
+			{{/if}}
 
 		</div>
 	</div>
 	<div class="row joueur2">
-		<div class="col-xs-2 ">MES ATTAQUES</div>
+		
+		{{#if amILeader}}
+		
+			<div class="col-xs-2 ">MES ATTAQUES:<br/>
+				<a href="#"  class="attack1" value = {{myCat.attacks.attack1.dommages}} >{{myCat.attacks.attack1.nom}}</a> <br/>
+				<a href="#"  class="attack2" value = {{myCat.attacks.attack2.dommages}} >{{myCat.attacks.attack2.nom}}</a> <br/>
+				<a href="#"  class="attack3" value = {{myCat.attacks.attack3.dommages}} >{{myCat.attacks.attack3.nom}}</a>	
+			</div>
+	
+		{{/if}}
+		
 		<div class="col-xs-2 catPhotoPlayer2"><img src="./img/{{myCat.img}}.jpg" alt="arobas" style="width:160px; height:160px;" /></div>
 		<div class="col-xs-2 player1Infos">INFOS {{currentUser.username}}: <br/> NOM CHAT : {{myCat.name}} <br/> LEVEL : {{myCat.level}} <br/> PVS : {{myCat.hp}}<br/> </div>
 		
 	</div>
 		
-	{{#if amILeader}}
-		C'est a vous de jouer !! 
-	{{/if}}
-	
 </template>
 
 <template name="chooseCat">
