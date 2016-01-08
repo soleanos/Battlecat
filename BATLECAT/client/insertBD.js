@@ -33,12 +33,12 @@ Template.updateBd.helpers({
     var nbBreed = Breed.find().count();
     var breed = Breed.find().fetch();
 		if(breed.length==0){
-			Breed.insert( {nameBreed:"Grumpy"} );
+			Breed.insert( {nameBreed:"Grumpy",attaks: } );
 			
 			return "Les races de chats ont étés correctement insérés";
 			
 		}else{
 			return ("Insertion échouée car il y a déja "+nbdoc+" races insérés");
-		}
+		//~ }
   },
 });
