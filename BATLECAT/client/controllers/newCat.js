@@ -16,6 +16,9 @@ Template.newCat.events({
 		
 		var img = $("input[name='img']").val();
 
+       	catBreed = Breed.findOne({"nameBreed": breed });
+        attacks = catBreed && catBreed.attacks;
+        
         var cat = {
 
                 name: name,
@@ -28,7 +31,9 @@ Template.newCat.events({
                 
                 owner: iduser,
                 
-                img:img
+                img:img,
+                
+                attacks:attacks,
 
         }
 		var quantity = Session.get("quantity");
