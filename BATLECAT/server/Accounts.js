@@ -24,15 +24,14 @@ Accounts.validateNewUser(function(user) {
 
 
 Accounts.onCreateUser(function(options, user) {
-  user.money = 10000;
-  user.FightRequest = 0;
+  user.money = 300;
   return user;
 });
 
 Meteor.users.allow({
   update: function (userId, user, fields, modifier) {
     // can only change your own documents
-    if(user._id == userId || fields =="inFight")
+    if(user._id == userId || fields =="inFight" || fields =="money")
     {
       Meteor.users.update({_id: userId}, modifier);
       return true;

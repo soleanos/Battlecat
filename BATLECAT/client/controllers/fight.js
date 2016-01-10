@@ -1,14 +1,36 @@
  Template.fightArea.events = {
         "click .leave-fight" : function(e,t) {
-			myfights = Fight.find({"player2": Meteor.userId()}).fetch();
-			if(myfights == ""){
-				myfights = Fight.find({"player1": Meteor.userId()}).fetch();
+			myFigth = Fight.findOne({"player2": Meteor.userId()});
+			
+			if(!myFigth){
+				myFigth = Fight.findOne({"player1": Meteor.userId()});
 			}
-			if(myfights[0].stateFight != "end"){
-				Fight.update({_id: myfights[0]._id},{$set:{"stateFight":"end"}});
-			}else{
-				Fight.remove({_id:myfights[0]._id});
+
+			if(myFigth){
+				
+				winner = myFigth.winner;
+				
+				
+				if(myFigth.stateFight == "surrend"){	
+					Fight.remove({_id:myFigth._id});
+				}
+				
+				if(myFigth.stateFight == "end" && winner){	
+					Fight.update({_id: myFigth._id},{$set:{"stateFight":"end 1 player left"}});
+					Chat.insert( {fightId:myFight._id,author:"SYSTEM",message:"L'ADVERSAIRE VIENT DE QUITTER LA PARTIE"} )	
+				}
+				
+				if(myFigth.stateFight == "end 1 player left" && winner){	
+					Fight.remove({_id:myFigth._id});
+				}
+				
+				if(myFigth.stateFight != "end" && !winner){
+					Fight.update({_id: myFigth._id},{$set:{"stateFight":"surrend"}});
+				}
+				
+				
 			}
+			
 			Meteor.users.update({_id: Meteor.userId()},{$set:{"inFight":0}});
 			Router.go('/');
         }
@@ -23,7 +45,7 @@ Template.fightArea.helpers({
 			}
 			stateFight = myfights && myfights.stateFight;
 			
-			if(stateFight == "end"){return true }
+			if(stateFight == "surrend"){return true }
 	},
 	needIChooseCat: function() {
 		myFight = Fight.findOne({"player2": Meteor.userId()});		
@@ -32,7 +54,34 @@ Template.fightArea.helpers({
 				return true;
 			}
 		}
-	}
+	},
+	verifWin: function() {
+		myfights = Fight.findOne({"player2": Meteor.userId()});
+				
+		if(!myfights){
+			myfights = Fight.findOne({"player1": Meteor.userId()});
+		}
+		winner = myfights && myfights.winner;
+		
+		if(Meteor.userId()==winner){
+			return true;
+		}
+		
+	},
+	verifLoose: function() {
+		myfights = Fight.findOne({"player2": Meteor.userId()});
+				
+		if(!myfights){
+			myfights = Fight.findOne({"player1": Meteor.userId()});
+		}
+		winner = myfights && myfights.winner;
+		
+		if (winner){
+			if(Meteor.userId() != winner){
+				return true;
+			}
+		}
+	},
 
 });
 

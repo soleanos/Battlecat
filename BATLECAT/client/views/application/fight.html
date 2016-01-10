@@ -3,19 +3,26 @@
 	COMBAT EN COURS
 	<input type="button" class="leave-fight" value="Quitter le combat" />
 	
-
-	
 	{{#if verifSurrend}} 
 		{{> surrend}}
 	{{else}}
-		{{#if needIChooseCat}} 
-			{{> chooseCat}}
-		{{else}}
-			{{> game}}
+		{{#if verifWin}} 
+			vous avez gagné <br/>
+			{{> chat}}
+		{{else}}	
+			{{#if verifLoose}}
+				vous avez perdu <br/>
+				{{> chat}}
+			{{else}}
+				{{#if needIChooseCat}} 
+					{{> chooseCat}}
+				{{else}}
+					{{> game}}
+				{{/if}}
+			{{/if}}	
 		{{/if}}
 	{{/if}}
-	
-	
+		
 </template>
 
 <template name="surrend">
