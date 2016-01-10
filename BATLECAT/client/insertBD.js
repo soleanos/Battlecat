@@ -14,7 +14,7 @@ Template.updateBd.helpers({
 			Market.insert( {price:500, type: "cat",breed:"Exotic",sexe:"female",img:"exotic", quantity:10 } )
 			//~ Market.insert( {price:500, type: "cat",breed:"Exotic",sexe:"male",img:"exotic", quantity:10 } )
 			
-			Market.insert( {price:1000, type: "cat",breed:"Dieu chat",sexe:"female",img:"god", quantity:10 } )
+			Market.insert( {price:1000, type: "cat",breed:"Dieu chat",sexe:"female",img:"god", quantity:3 } )
 			//~ Market.insert( {price:1000, type: "cat",breed:"Dieu chat",sexe:"male",img:"god", quantity:10 } )
 			
 			//~ Market.insert( {price:300, type: "cat",breed:"Persan",sexe:"female",img:"persan", quantity:10 } )
