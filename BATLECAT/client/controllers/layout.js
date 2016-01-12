@@ -18,6 +18,9 @@ Template.mainLayout.helpers({
 			$('#fight').modal('hide');
 			$('body').removeClass('modal-open');
 			$('.modal-backdrop').remove();
+			
+			myFigth = Fight.findOne({"player2": Meteor.userId()});
+
 		}else{
 			
 			var mySelf = Meteor.users.findOne({_id: Meteor.userId()});
@@ -29,7 +32,7 @@ Template.mainLayout.helpers({
 			}
 		
 			var stateFight = myFight && myFight.stateFight;
-			if(myFight && stateFight != "end"){
+			if(myFight && stateFight != "surrend" && stateFight != "end"){
 				$("#fight").modal("show");
 				return true;
 			}else{

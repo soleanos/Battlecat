@@ -1,12 +1,17 @@
  <template name="myCats">
  
 	{{#each cats}}
+		{{progressCatXp}}
 		<div class="col-lg-2 cat">
 			<img src="./img/{{img}}.jpg" alt="arobas" style="width:160px; height:160px;" /> 
 			<div class = "">
-				<b>Nom : {{ name}} </b> <br />
-				 Niveau : {{level}} <br />
-				 race : {{breed}} <br />
+
+				<b>NOM : {{ name}} </b> <br />
+				 NIVEAU : {{level}} <br />
+				 RACE : {{breed}} <br />
+				 SEXE : {{sex}} <br />
+				 XP : <progress value={{xp}} max={{levelMax}}>50%</progress> <br />
+		
 				 <a href="#"  class="open-modal" value = {{_id}}>FAIRE COMBATTRE </a>
 			</div>
 		</div>

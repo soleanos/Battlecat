@@ -16,6 +16,8 @@ Template.newCat.events({
 		
 		var img = $("input[name='img']").val();
 
+		var xp = 0;
+		
        	catBreed = Breed.findOne({"nameBreed": breed });
         attacks = catBreed && catBreed.attacks;
         
@@ -24,6 +26,8 @@ Template.newCat.events({
                 name: name,
 
                 breed: breed,
+                
+                xp : xp,
 
                 sex : sex,
 

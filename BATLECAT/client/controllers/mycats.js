@@ -31,15 +31,25 @@ Tracker.autorun(function () {
 });
 
 Template.myCats.helpers({
-	alertFight: function() {
-		if(Fight.find({"player2": Meteor.userId()}).count()>0){
-			$("#fight").modal("show");
-			return true;
-		}
+	levelMax: function() {
+		
+		ArrayLimitLevel = [0,300,600,1200,1800,2200,2600,3000,3200,3400,3600,4000,4400,4800,5300,6000,7000,8000,10000,13000,15000,19000,22000,24000,26000,30000,40000,50000,70000,100000,150000,200000];
+		
+		i = -1;
+		level = false;
+		
+		maxLevel = 0;
+		
+		while (level ==false) {
+			if(this.xp < ArrayLimitLevel[i+1]){
+				maxLevel = ArrayLimitLevel[i+1];
+				level =true;
+			}
+			i++;
+		}	
+		
+		return maxLevel
 	},
-	test: function() {
-			$("#fight").modal("show");
-	}
 });
 
 Template.chooseEnemy.helpers({
@@ -47,14 +57,17 @@ Template.chooseEnemy.helpers({
 		return Meteor.users.find({"_id":{$not:null}});
 	},
 	usersOnlineCheck: function(){
-		if (this.status.online == true && Meteor.user().username != this.username){
+		online = this && this.status && this.status.online; 	
+		if ( online == true && Meteor.user().username != this.username){
 			return true
 		}else{return false}
 	},
 	userStatusClass: function(){
-		if (this.status.idle)
+		online = this && this.status.online; 
+		idle = this && this.status.idle;
+		if (idle)
 			return "label-warning"
-		else if (this.status.online)
+		else if (online)
 			return "label-success"
 		else
 			return "label-default"
