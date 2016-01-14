@@ -10,8 +10,16 @@
 				 NIVEAU : {{level}} <br />
 				 RACE : {{breed}} <br />
 				 SEXE : {{sex}} <br />
-				 XP : <progress value={{xp}} max={{levelMax}}>50%</progress> <br />
-		
+				 XP : <progress value={{xp}} max={{levelMax}}>50%</progress> <br /><br />
+
+				 <details>
+					  <summary>CARACTERISTIQUES :	</summary>
+				
+							 POINTS DE VIES MAX : {{hp}}<input type="button" value="+">  <br /> 
+							 FORCE : {{strength}} <input type="button" value="+">  <br />
+							 RESISTANCE : {{resistance}}<input type="button" value="+"> <br />
+							 AGILITE : {{agility}} <input type="button" value="+"> 
+				 </details>
 				 <a href="#"  class="open-modal" value = {{_id}}>FAIRE COMBATTRE </a>
 			</div>
 		</div>
