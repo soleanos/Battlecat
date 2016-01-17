@@ -18,6 +18,14 @@ Template.newCat.events({
 
 		var xp = 0;
 		
+		var strength = 0;
+		
+		var resistance = 0;
+		
+		var agility = 0;
+		
+		var hp = 0;
+		
        	catBreed = Breed.findOne({"nameBreed": breed });
         attacks = catBreed && catBreed.attacks;
         
@@ -35,7 +43,15 @@ Template.newCat.events({
                 
                 owner: iduser,
                 
+                hp:hp,
+                
                 img:img,
+                
+                strength:strength,
+                
+                resistance:resistance,
+                
+                agility:agility,
                 
                 attacks:attacks,
 

@@ -22,6 +22,8 @@
 					Meteor.users.update({_id: idEnnemy},{$set:{"inFight":2}});
 				}
 			}
+		}, 'click button': function () {
+			
 		}
  };
 

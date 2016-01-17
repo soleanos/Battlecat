@@ -5,12 +5,21 @@
 		<div class="col-lg-2 cat">
 			<img src="./img/{{img}}.jpg" alt="arobas" style="width:160px; height:160px;" /> 
 			<div class = "">
+
 				<b>NOM : {{ name}} </b> <br />
 				 NIVEAU : {{level}} <br />
 				 RACE : {{breed}} <br />
 				 SEXE : {{sex}} <br />
-				 XP : <progress value={{xp}} max={{levelMax}}>50%</progress> <br />
-						
+				 XP : <progress value={{xp}} max={{levelMax}}>50%</progress> <br /><br />
+
+				 <details>
+					  <summary>CARACTERISTIQUES :	</summary>
+				
+							 POINTS DE VIES MAX : {{hp}}<input type="button" value="+">  <br /> 
+							 FORCE : {{strength}} <input type="button" value="+">  <br />
+							 RESISTANCE : {{resistance}}<input type="button" value="+"> <br />
+							 AGILITE : {{agility}} <input type="button" value="+"> 
+				 </details>
 				 <a href="#"  class="open-modal" value = {{_id}}>FAIRE COMBATTRE </a>
 			</div>
 		</div>

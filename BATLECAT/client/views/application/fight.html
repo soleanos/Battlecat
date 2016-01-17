@@ -47,7 +47,7 @@
 			
 			{{myFigthLog.message}}<br/>
 			{{#if amILeader}}
-			C'est a vous de jouer !! 
+				C'est a vous de jouer !! 
 			{{/if}}
 
 		</div>
@@ -55,13 +55,13 @@
 	<div class="row joueur2">
 		
 		{{#if amILeader}}
-		
+			
 			<div class="col-xs-2 ">MES ATTAQUES:<br/>
-				<a href="#"  class="attack1" value = {{myCat.attacks.attack1.dommages}} >{{myCat.attacks.attack1.nom}}</a> <br/>
-				<a href="#"  class="attack2" value = {{myCat.attacks.attack2.dommages}} >{{myCat.attacks.attack2.nom}}</a> <br/>
-				<a href="#"  class="attack3" value = {{myCat.attacks.attack3.dommages}} >{{myCat.attacks.attack3.nom}}</a>	
+				{{#each myCat.attacks }}
+					<a href="#"  class="attack" value = {{dommages}} >{{nom}}</a> <br/>
+				{{/each}}
 			</div>
-	
+			
 		{{/if}}
 		
 		<div class="col-xs-2 catPhotoPlayer2"><img src="./img/{{myCat.img}}.jpg"  style="width:160px; height:160px;" /> <br /> <progress value={{myCat.hp}} max="100"></progress> <br /></div>
