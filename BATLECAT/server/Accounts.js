@@ -24,7 +24,7 @@ Accounts.validateNewUser(function(user) {
 
 
 Accounts.onCreateUser(function(options, user) {
-  user.money = 300;
+  user.money = 30000;
   return user;
 });
 

@@ -53,7 +53,6 @@ Template.updateBd.helpers({
 			Breed.insert({nameBreed:"Chat licorne",attacks:[{nom:"Attaque arc en ciel",dommages:5},{nom:"Coup de corne",dommages:7},{nom:"LICOOOOOOOORNE !! ",dommages:7}]})
 			Breed.insert({nameBreed:"Chavant fou",attacks:[{nom:"Jet d'éprouvette",dommages:5},{nom:"Explosion !!!!",dommages:7},{nom:"Attaque du scientifique fou",dommages:7}]})
 
->>>>>>> 8a07279b501d1fde89839517c2a6105d5a87677c
 			return "Les races de chats ont étés correctement insérés";
 			
 		}else{

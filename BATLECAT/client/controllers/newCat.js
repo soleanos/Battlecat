@@ -26,6 +26,10 @@ Template.newCat.events({
 		
 		var hp = 0;
 		
+		var statPoints = 20;
+		
+		var hpMax = 100;
+		
        	catBreed = Breed.findOne({"nameBreed": breed });
         attacks = catBreed && catBreed.attacks;
         
@@ -42,6 +46,10 @@ Template.newCat.events({
                 level: level,
                 
                 owner: iduser,
+                
+                statPoints:statPoints,
+                
+                hpMax:hpMax,
                 
                 hp:hp,
                 

@@ -22,9 +22,16 @@
 					Meteor.users.update({_id: idEnnemy},{$set:{"inFight":2}});
 				}
 			}
-		}, 'click button': function () {
-			
+		}, 'click #btnAgility': function (e,t) {
+			updateStat(e,"agility");
+		}, 'click #btnStrength': function (e,t) {
+			updateStat(e,"strength");
+		}, 'click #btnResistance': function (e,t) {
+			updateStat(e,"resistance");
+		}, 'click #btnHpMax': function (e,t) {
+			updateStat(e,"hpMax");
 		}
+		
  };
 
 
@@ -76,3 +83,22 @@ Template.chooseEnemy.helpers({
 		}
 });
 
+function updateStat(e,statToUpdate) {
+	
+	idCat = $(e.target).attr('value2');
+	catToUpdate = Cats.findOne({"_id": idCat});
+	
+	oldStat = catToUpdate[statToUpdate];
+	oldStatPoints = catToUpdate.statPoints;
+		
+		
+	if(oldStatPoints > 0){
+		var obj = {};
+		obj[statToUpdate] = oldStat+1;
+
+		Cats.update({_id: idCat},{ $set: obj});
+		Cats.update({_id: idCat},{$set:{"statPoints":oldStatPoints-1}});
+	}else{
+		alert("Vous n'avez pas assez de points de compétences !");
+	}
+}
