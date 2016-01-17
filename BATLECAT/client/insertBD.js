@@ -21,6 +21,9 @@ Template.updateBd.helpers({
 			Market.insert( {price:300, type: "cat",breed:"Persan",sexe:"male",img:"persan", quantity:10 } ) 
 		  
 			Market.insert( {price:300, type: "cat",breed:"Grumpy",sexe:"male",img:"grumpy", quantity:10 } ) 
+			
+			Market.insert( {price:500, type: "cat",breed:"Chat licorne",sexe:"female",img:"licorne", quantity:5 } ) 
+			
 			//~ Market.insert( {price:300, type: "cat",breed:"Grumpy",sexe:"female",img:"grumpy", quantity:10 } ) 
 			
 			return "Les chats ont étés correctement insérés";
@@ -39,6 +42,7 @@ Template.updateBd.helpers({
 			Breed.insert({nameBreed:"Exotic",attacks:{attack1:{nom:"Coup de patte violent",dommages:5},attack2:{nom:"Charge déchainée",dommages:7},attack3:{nom:"Coup de langue",dommages:8}}})
 			Breed.insert({nameBreed:"Himalayen",attacks:{attack1:{nom:"Rage des montagnes",dommages:5},attack2:{nom:"Coup de patte",dommages:7},attack3:{nom:"Lechouille",dommages:8}}})
 			Breed.insert({nameBreed:"Chat lion",attacks:{attack1:{nom:"Griffure du lion sauvage",dommages:5},attack2:{nom:"Coup de patte de la savane",dommages:7},attack3:{nom:"Morsure",dommages:8}}})
+			Breed.insert({nameBreed:"Chat licorne",attacks:{attack1:{nom:"Arc en ciel dévastateur",dommages:10},attack2:{nom:"LICORNE POWEEEEEER",dommages:7},attack3:{nom:"Coup de corne violent",dommages:8}}})
 			return "Les races de chats ont étés correctement insérés";
 			
 		}else{
