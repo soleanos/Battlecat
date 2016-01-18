@@ -58,6 +58,12 @@ Template.myCats.helpers({
 		}	
 		
 		return maxLevel
+	},haveIStatePoints: function() {
+		cat = Cats.findOne({"_id": this._id});
+		statPoints = cat && cat.statPoints;
+		if(statPoints > 0){
+			return true
+		}
 	},
 });
 
