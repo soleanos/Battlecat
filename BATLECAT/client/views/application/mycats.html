@@ -44,7 +44,13 @@
 		{{#each user}}
 			{{#if usersOnlineCheck}} 
 				<a href="#" class = "{{userStatusClass}}"> {{username}}</a> 
-				<a  value = "{{_id}}" class ="open-fight">[DEFIER]</a>  <br />
+				
+				{{#if checkIfIsInFight}} 
+					est déja en combat contre {{ennemyOfThisPlayer}} <br />
+				{{else}}
+					<a  value = "{{_id}}" class ="open-fight">[DEFIER]</a>  <br />
+				{{/if}}
+				
 			{{/if}}
 		{{/each}}
   

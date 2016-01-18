@@ -191,6 +191,8 @@ function checkLevelUp(cat,myFight) {
 				messageToSend = "LE CHAT "+cat.name+" VIENT DE PASSER NIVEAU "+newLevel;
 				Chat.insert( {fightId:myFight._id,author:"SYSTEM",message:messageToSend} )	
 				Cats.update({_id: cat._id},{$set:{"level":newLevel}});
+				oldStatPoints = cat.statPoints;
+				Cats.update({_id: cat._id},{$set:{"statPoints":oldStatPoints+3}});
 			}
 			level = true;
 		}

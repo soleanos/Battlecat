@@ -86,7 +86,25 @@ Template.chooseEnemy.helpers({
 			return "label-success"
 		else
 			return "label-default"
+	},checkIfIsInFight: function(){
+		myFigth = Fight.findOne({"player2": this._id});
+		if(!myFigth){
+			myFigth = Fight.findOne({"player1": this._id});
 		}
+		if(myFigth){return true}
+		
+	},ennemyOfThisPlayer: function(){
+		myFigth = Fight.findOne({"player2": this._id});
+		if(myFigth){
+			ennemy = myFigth && myFigth.player1;
+			myEnnemy = Meteor.users.findOne({"_id":ennemy});
+		}else{
+			myFigth = Fight.findOne({"player1": this._id});
+			ennemy = myFigth && myFigth.player2;
+			myEnnemy = Meteor.users.findOne({"_id":ennemy});
+		}
+		return myEnnemy.username;
+	},
 });
 
 function updateStat(e,statToUpdate) {
