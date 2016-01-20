@@ -33,12 +33,12 @@ Template.fight.events = {
 			
 			catsPlayer1 = Cats.find({owner : myfights[0].player1 }).fetch();
 			for (cat in catsPlayer1){
-				Cats.update({_id: catsPlayer1[cat]._id },{$set:{"hp":100}});
+				Cats.update({_id: catsPlayer1[cat]._id },{$set:{"hp":catsPlayer1[cat].hpMax}});
 			}
 			
 			catsPlayer2 = Cats.find({owner : Meteor.userId() }).fetch();
 			for (cat in catsPlayer2){
-				Cats.update({_id: catsPlayer2[cat]._id },{$set:{"hp":100}});
+				Cats.update({_id: catsPlayer2[cat]._id },{$set:{"hp":catsPlayer2[cat].hpMax}});
 			}
 				
 			Fight.update({_id: myfights[0]._id},{$set:{"stateFight":"En cours"}});

@@ -2,81 +2,81 @@
 <template name="fightArea">
 	COMBAT EN COURS
 	<input type="button" class="leave-fight" value="Quitter le combat" />
-	
-	{{#if verifSurrend}} 
+
+	{{#if verifSurrend}}
 		{{> surrend}}
 	{{else}}
-		{{#if verifWin}} 
+		{{#if verifWin}}
 			vous avez gagné <br/>
 			{{> chat}}
-		{{else}}	
+		{{else}}
 			{{#if verifLoose}}
 				vous avez perdu <br/>
 				{{> chat}}
 			{{else}}
-				{{#if needIChooseCat}} 
+				{{#if needIChooseCat}}
 					{{> chooseCat}}
 				{{else}}
 					{{> game}}
 				{{/if}}
-			{{/if}}	
+			{{/if}}
 		{{/if}}
 	{{/if}}
-		
+
 </template>
 
 <template name="surrend">
-	Votre adversaire a abandonné :'( gg ! 
+	Votre adversaire a abandonné :'( gg !
 </template>
 
 <template name="game">
-	
-	
+
+
 	<div class="row joueur1 ">
 		<div class="col-xs-2 player2Infos">INFOS {{ennemy.username}} : <br/> NOM CHAT : {{ennemyCat.name}} <br/> LEVEL : {{ennemyCat.level}}<br/> PVS : {{ennemyCat.hp}} <br/> </div>
-		
+
 		<div class="col-xs-4 catPhotoPlayer1"><img src="./img/{{ennemyCat.img}}.jpg"  style="width:160px; height:160px;" /> <br/> <progress value={{ennemyCat.hp}} max="100"></progress> <br /></div>
 	</div>
-	
+
 	<div class="row midle">
 		<div class="col-xs-4 chat">
 		Discussion<br/>
 		{{> chat}}
 		</div>
 		<div class="col-xs-8 logs">
-			
+
 			{{myFigthLog.message}}<br/>
 			{{#if amILeader}}
-				C'est a vous de jouer !! 
+				C'est a vous de jouer !!
 			{{/if}}
 
 		</div>
 	</div>
 	<div class="row joueur2">
-		
+
 		{{#if amILeader}}
-			
+
 			<div class="col-xs-2 ">MES ATTAQUES:<br/>
 				{{#each myCat.attacks }}
-					<a href="#"  class="attack" value = {{dommages}} >{{nom}}</a> <br/>
+					<a href="#"  class="attack" nomAttaque ="{{nom}}">{{nom}} {{dommages}} (+{{additionalDommgs}})</a> <br/>
 				{{/each}}
 			</div>
-			
+
 		{{/if}}
-		
+
 		<div class="col-xs-2 catPhotoPlayer2"><img src="./img/{{myCat.img}}.jpg"  style="width:160px; height:160px;" /> <br /> <progress value={{myCat.hp}} max="100"></progress> <br /></div>
 		<div class="col-xs-2 player1Infos">INFOS {{currentUser.username}}: <br/> NOM CHAT : {{myCat.name}} <br/> LEVEL : {{myCat.level}} <br/> PVS : {{myCat.hp}}<br/> </div>
-		
+
 	</div>
-		
+
 </template>
 
 <template name="chooseCat">
 	<select class="selectCat" name="select">
 		<option value=""  >SELECTIONNER UN CHAT</option>
 		{{#each allMyCats}}
-			<option value={{_id}}>{{name}} ( {{breed}} niveau {{level}}</option> 
-		{{/each}}	 
+			<option value={{_id}}>{{name}} ( {{breed}} niveau {{level}}</option>
+		{{/each}}
 	</select>
 	<input type="button" class="valid-cat" value="VALIDER LE CHAT" />
 </template>
