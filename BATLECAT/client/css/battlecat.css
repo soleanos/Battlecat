@@ -25,6 +25,11 @@
   }
 }
 
+
+.navbar {
+    margin-bottom: 0;
+}
+
 .joueur1{
 height:400px;
 /*

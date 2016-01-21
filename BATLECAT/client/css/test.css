@@ -1,0 +1,21 @@
+
+.adversaire1{
+	background-color:red;
+	height: 1000px;
+	width:759;
+	left:-759px;
+}
+.adversaire2{
+	background-color:blue;
+	height: 1000px;
+	width:759;
+	right:-759px;
+}
+.coco{
+	background-color:yellow;
+	height: 150px;
+	width:350px;
+	left:565px;
+	position:absolute;
+	top:-150px;
+}

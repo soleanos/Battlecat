@@ -26,7 +26,7 @@ Template.newCat.events({
 		
 		var hp = 0;
 		
-		var statPoints = 20;
+		var statPoints = 0;
 		
 		var hpMax = 100;
 		

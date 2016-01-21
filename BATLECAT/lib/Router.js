@@ -55,6 +55,7 @@ Router.route('/myCats', {
         };
 
     },
+     waitOn: function() {  $('#cara').hide(); }
 });
 
 
@@ -82,6 +83,12 @@ Router.route('/cats', {
 Router.route('/updateBd', {
 
     name: "updateBd",
+
+});
+
+Router.route('/test', {
+
+    name: "test",
 
 });
 

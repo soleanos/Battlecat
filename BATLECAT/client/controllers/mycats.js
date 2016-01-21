@@ -30,6 +30,8 @@
 			updateStat(e,"resistance");
 		}, 'click #btnHpMax': function (e,t) {
 			updateStat(e,"hpMax");
+		}, 'click .open-cara': function (e,t) {
+			$('#cara span').fadeToggle();
 		}
 		
  };

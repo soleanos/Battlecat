@@ -12,15 +12,21 @@
 				 SEXE : {{sex}} <br />
 				 XP : <progress value={{xp}} max={{levelMax}}>50%</progress> <br /><br />
 
+				 <a href="#"  class="open-cara" value = {{_id}}>Détails </a>
 				
-				 <details>
-					  <summary>CARACTERISTIQUES :	</summary>
-				
-							 POINTS DE VIES MAX : {{hpMax}} {{#if haveIStatePoints}} <input id ="btnHpMax" type="button" value="+" value2 ="{{_id}}">  <br /> {{/if}}
-							 FORCE : {{strength}} {{#if haveIStatePoints}}  <input id ="btnStrength" type="button" value="+" value2 ="{{_id}}">  <br />{{/if}}
-							 RESISTANCE : {{resistance}} {{#if haveIStatePoints}} <input id ="btnResistance" type="button" value="+" value2 ="{{_id}}"> <br />{{/if}}
-							 AGILITE : {{agility}} {{#if haveIStatePoints}} <input id ="btnAgility" type="button" value="+" value2 ="{{_id}}"> {{/if}}
-				 </details>
+							<div id="cara">
+							 
+								 <span>
+									 CARACTERISTIQUES :	
+						
+									 POINTS DE VIES MAX : {{hpMax}} {{#if haveIStatePoints}} <input id ="btnHpMax" type="button" value="+" value2 ="{{_id}}">  <br /> {{/if}}
+									 FORCE : {{strength}} {{#if haveIStatePoints}}  <input id ="btnStrength" type="button" value="+" value2 ="{{_id}}">  <br />{{/if}}
+									 RESISTANCE : {{resistance}} {{#if haveIStatePoints}} <input id ="btnResistance" type="button" value="+" value2 ="{{_id}}"> <br />{{/if}}
+									 AGILITE : {{agility}} {{#if haveIStatePoints}} <input id ="btnAgility" type="button" value="+" value2 ="{{_id}}"> {{/if}}
+								 </span>
+							 
+							</div>
+				 
 				 <a href="#"  class="open-modal" value = {{_id}}>FAIRE COMBATTRE </a>
 			</div>
 		</div>
