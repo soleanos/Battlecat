@@ -32,14 +32,14 @@ Template.test.helpers({
 	},
 	leftChatPx: function() {
 		
-	width= $(window).width();
-	lefti = (width/2)-175;
-
-	//~ $(window).resize(function(evt) {
-	//~ $(".chat").css({left: 0});
-	//~ });
+		$(window).resize(function(evt) {
+			width= $(window).width();
+			left = (width/2)-175;
+			$(".chat").css('left', left);
+		});
 		
-	return left;
-	
+		width= $(window).width();
+		left = (width/2)-175;
+		return left;
 	},
 });
