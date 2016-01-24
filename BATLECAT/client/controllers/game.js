@@ -95,7 +95,78 @@ Template.game.helpers({
 		}
 		dmgs = kitty.strength/2
 		return dmgs;
-		},
+	},
+	leftChatPx: function() {
+		
+		$(window).resize(function(evt) {
+			width= $(window).width();
+			left = (width/2)-175;
+			$(".chat").css('left', left);
+		});
+		
+		width= $(window).width();
+		left = (width/2)-175;
+		return left;
+	},
+	leftSateFightPx : function(e,t) {
+	 
+		$(window).resize(function(evt) {
+			width= $(window).width();
+			left = (width/2)-350;
+			$(".stateFight").css('left', left);
+		});
+		
+		width= $(window).width();
+		left = (width/2)-350;
+		return left;
+
+	},
+	heightPlayerBlock : function(e,t) {
+	 
+		$(window).resize(function(evt) {
+			height= $(window).height()-55;
+			$(".blockPlayer1").css('height', height);
+			$(".blockPlayer2").css('height', height);
+		});
+		
+		
+		height= $(window).height()-55;
+		return height;
+
+	},
+	attacksBlockPx : function(e,t) {
+	 
+		$(window).resize(function(evt) {
+			top= $(window).height()/2-100;
+			$(".attacks1").css('top', top);
+			$(".attacks2").css('top', top);
+		});
+		
+		height = $(window).height()
+		
+		topi= (height/2)-100;
+		
+		return topi;
+
+	},
+	topPhotoCat: function(e,t) {
+	 
+		$(window).resize(function(evt) {
+			top= $(window).height()/2-100;
+			$(".attacks1").css('top', top);
+			$(".attacks2").css('top', top);
+		});
+		
+		height = $(window).height()
+		
+		topi= (height/2)-200;
+		
+		return topi;
+
+	},
+	
+	
+	
 });
 
 Template.game.events = {

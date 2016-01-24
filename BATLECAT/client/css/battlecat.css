@@ -30,52 +30,17 @@
     margin-bottom: 0;
 }
 
-.joueur1{
-height:400px;
-/*
- background-color: blue;
-*/
- border-width:1px;
- border-style:dotted;
- border-color:black
-}
-.joueur2{
-height:400px;
-/*
- background-color: yellow;
-*/
- border-width:1px;
- border-style:dotted;
- border-color:black
-}
 
-.midle{
-height:300px;
-/*
- background-color: red;
-*/
- border-width:1px;
- border-style:dotted;
- border-color:black
-}
-
-.player1Infos{
-top:215px;
-float:right;
-}
-
-.player2Infos{
-top:5%;
-}
 
 .catPhotoPlayer2{
 margin-top:2%;
 margin-left:24%;
+position:absolute;
 }
 
 .catPhotoPlayer1{
 margin-top:3%;
-margin-left:23.5%;
+position:absolute;
 }
 
 

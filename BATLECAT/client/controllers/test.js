@@ -1,12 +1,12 @@
  Template.test.events = {
         "click .test" : function(e,t) {
-			 $(".adversaire1").animate({
+			 $(".player1").animate({
 				left: '0px',
 				//~ height: '+=150px',
 				//~ width: '+=150px'
 			});
         
-			 $(".adversaire2").animate({
+			 $(".player2").animate({
 				left: '0px',
 				//~ height: '+=150px',
 				//~ width: '+=150px'
@@ -42,4 +42,47 @@ Template.test.helpers({
 		left = (width/2)-175;
 		return left;
 	},
+	leftSateFightPx : function(e,t) {
+	 
+		$(window).resize(function(evt) {
+			width= $(window).width();
+			left = (width/2)-350;
+			$(".stateFight").css('left', left);
+		});
+		
+		width= $(window).width();
+		left = (width/2)-350;
+		return left;
+
+	},
+	heightPlayerBlock : function(e,t) {
+	 
+		$(window).resize(function(evt) {
+			height= $(window).height()-55;
+			$(".blockPlayer1").css('height', height);
+			$(".blockPlayer2").css('height', height);
+		});
+		
+		
+		height= $(window).height()-55;
+		return height;
+
+	},
+	attacksBlockPx : function(e,t) {
+	 
+		$(window).resize(function(evt) {
+			top= $(window).height()/2-100;
+			$(".attacks1").css('top', top);
+			$(".attacks2").css('top', top);
+		});
+		
+		height = $(window).height()
+		
+		topi= (height/2)-100;
+		
+		return topi;
+
+	},
+	
 });
+

@@ -1,21 +1,82 @@
 
-.adversaire1{
+.blockPlayer1{
 	background-color:#D6E8F9;
 	height: 1000px;
 	
+/*
 	left:-759px;
+*/
 }
-.adversaire2{
+.blockPlayer2{
 	background-color:#FFE8EA;
 	height: 1000px;
 	
+/*
 	right:-759px;
+*/
 }
 .chat{
 	background-color:#E5E5E5;
-	height: 150px;
+	height: 200px;
 	width:350px;
-	left:565px;
 	position:absolute;
+	border-left: 1px solid grey;
+    border-right: 1px solid grey;
+    border-top: 1px solid grey;
+	bottom:0px;
+/*
 	top:-150px;
+*/
+}
+
+.stateFight{
+	background-color:#E5E5E5;
+	height: 150px;
+	width:700px;
+	position:absolute;
+	border-left: 1px solid grey;
+    border-right: 1px solid grey;
+    border-bottom: 1px solid grey;
+    padding-top:60px;
+    padding-left:40px;
+}
+
+
+.player1{
+	background-color:#E5E5E5;
+	height: 150px;
+	position:absolute;
+    border-right: 1px solid grey;
+    border-bottom: 1px solid grey;
+    padding-top:20px;
+}
+
+.player2{
+	background-color:#E5E5E5;
+	height: 150px;
+	position:absolute;
+	right:0px;
+    border-left: 1px solid grey;
+    border-bottom: 1px solid grey;
+    padding-top:20px;
+
+}
+
+.attacks1{
+	background-color:#E5E5E5;
+	height: 250px;
+	position:absolute;
+	border-top: 1px solid grey;
+    border-right: 1px solid grey;
+    border-bottom: 1px solid grey;
+}
+
+.attacks2{
+	background-color:#E5E5E5;
+	height: 250px;
+	position:absolute;
+	right:0px;
+	border-left: 1px solid grey;
+    border-top: 1px solid grey;
+    border-bottom: 1px solid grey;
 }
