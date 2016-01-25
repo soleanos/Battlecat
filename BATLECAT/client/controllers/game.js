@@ -164,9 +164,42 @@ Template.game.helpers({
 		return topi;
 
 	},
-	
-	
-	
+	"click .leave-fight" : function(e,t) {
+			myFigth = Fight.findOne({"player2": Meteor.userId()});
+			
+			if(!myFigth){
+				myFigth = Fight.findOne({"player1": Meteor.userId()});
+			}
+
+			if(myFigth){
+				
+				winner = myFigth.winner;
+				
+				
+				if(myFigth.stateFight == "surrend"){	
+					Fight.remove({_id:myFigth._id});
+				}
+				
+				if(myFigth.stateFight == "end" && winner){	
+					Fight.update({_id: myFigth._id},{$set:{"stateFight":"end 1 player left"}});
+					Chat.insert( {fightId:myFight._id,author:"SYSTEM",message:"L'ADVERSAIRE VIENT DE QUITTER LA PARTIE"} )	
+				}
+				
+				if(myFigth.stateFight == "end 1 player left" && winner){	
+					Fight.remove({_id:myFigth._id});
+				}
+				
+				if(myFigth.stateFight != "end" && !winner){
+					Fight.update({_id: myFigth._id},{$set:{"stateFight":"surrend"}});
+				}
+				
+				
+			}
+			
+			Meteor.users.update({_id: Meteor.userId()},{$set:{"inFight":0}});
+			Router.go('/');
+        }
+
 });
 
 Template.game.events = {

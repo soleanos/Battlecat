@@ -14,6 +14,7 @@
 		{{else}}
 			{{#if verifLoose}}
 				vous avez perdu <br/>
+				<input type="button" class="leave-fight" value="Quitter le combat" />
 				{{> chat}}
 			{{else}}
 				{{#if needIChooseCat}}
@@ -33,31 +34,21 @@
 
 <template name="game">
 
-
-	<div class ="blockPlayer1 col-xs-6 " style ='height:{{heightPlayerBlock}}px;'>
-
-		<div class="col-xs-4 catPhotoPlayer1" style='top:{{topPhotoCat}}px' ><img src="./img/{{ennemyCat.img}}.jpg"  style='top:{{topPhotoCat}}px' /> <br/> <br /> <progress style ="width:100%" value={{myCat.hp}} max="100"></progress></div>%
-		
+	<div class ="blockPlayer2 col-xs-6 " style ='height:{{heightPlayerBlock}}px;'>
+		<div class="col-xs-3 catPhotoPlayer2" style='top:{{topPhotoCat}}px' ><img src="./img/{{ennemyCat.img}}.jpg"  style='top:{{topPhotoCat}}px' /> <br/> <progress style ="width:100%" value={{ennemyCat.hp}} max="100"></progress><br /> </div>%	
 	</div>
 
-	<div class ="player1 col-xs-2" >
+	<div class ="player2 col-xs-2" >
 		INFOS {{ennemy.username}} : <br/> NOM CHAT : {{ennemyCat.name}} <br/> LEVEL : {{ennemyCat.level}}<br/> PVS : {{ennemyCat.hp}} <br/>
 	</div>
 
-
-	<div class ="blockPlayer2 col-xs-6" style ='height:{{heightPlayerBlock}}px;' >
-				
-
-		<div class="col-xs-4 catPhotoPlayer2" style='top:{{topPhotoCat}}px'><img src="./img/{{myCat.img}}.jpg"  style='width:160px; height:160px;' /> <br /> <progress value={{myCat.hp}} max="100"></progress> <br /></div>
-			
-			
-		<div class ="player2 col-xs-2" >
-			INFOS {{currentUser.username}}: <br/> NOM CHAT : {{myCat.name}} <br/> LEVEL : {{myCat.level}} <br/> PVS : {{myCat.hp}}
-		</div>
-
-			
+	<div class ="blockPlayer1 col-xs-6 photo" style ='height:{{heightPlayerBlock}}px;' >
+		<div class="col-xs-3 catPhotoPlayer1 photo" style='top:{{topPhotoCat}}px'><img src="./img/{{myCat.img}}.jpg"  style='top:{{topPhotoCat}}px' /> <br /> <progress style ="width:100%" value={{myCat.hp}} max="100"></progress> <br /></div>		
 	</div>
 
+	<div class ="player1 col-xs-2" >
+		INFOS {{currentUser.username}}: <br/> NOM CHAT : {{myCat.name}} <br/> LEVEL : {{myCat.level}} <br/> PVS : {{myCat.hp}}
+	</div>
 
 	<div class ="chat " style ='left:{{leftChatPx}}px;'>
 		Discussion<br/>
@@ -65,30 +56,22 @@
 	</div>
 
 	<div class ="stateFight " style ='left:{{leftSateFightPx}}px;'>
-		
 		{{myFigthLog.message}}<br/>
 		{{#if amILeader}}
 			C'est a vous de jouer !!
-		{{/if}}
-		
+		{{/if}}	
+		<input type="button" class="leave-fight" value="Quitter le combat" />
 	</div>
 
 	<div class ="attacks1 col-xs-2" style ='top:{{attacksBlockPx}}px;'>
-
-	{{#if amILeader}}
-
-		MES ATTAQUES:<br/>
-		{{#each myCat.attacks }}
-			<a href="#"  class="attack" nomAttaque ="{{nom}}">{{nom}} {{dommages}} (+{{additionalDommgs}})</a> <br/>
-		{{/each}}
-	
-
-	{{/if}}
-
+		{{#if amILeader}}
+			MES ATTAQUES:<br/>
+			{{#each myCat.attacks }}
+				<a href="#"  class="attack" nomAttaque ="{{nom}}">{{nom}} {{dommages}} (+{{additionalDommgs}})</a> <br/>
+			{{/each}}
+		{{/if}}
 	</div>
 			
-
-
 </template>
 
 <template name="chooseCat">
