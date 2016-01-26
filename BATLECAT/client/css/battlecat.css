@@ -40,16 +40,18 @@ position:absolute;
 width:160px;
 height:180px;
 */
+z-index: 2;
 }
 
 .catPhotoPlayer1{
 margin-top:6%;
 position:absolute;
 margin-left:24%;
-
+z-index: 2;
 /*
 width:160px;
 height:180px;
+* 
 */
 }
 

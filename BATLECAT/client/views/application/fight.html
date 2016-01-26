@@ -6,9 +6,11 @@
 -->
 
 	{{#if verifSurrend}}
+		<input type="button" class="leave-fight" value="Quitter le combat" />
 		{{> surrend}}
 	{{else}}
 		{{#if verifWin}}
+			<input type="button" class="leave-fight" value="Quitter le combat" />
 			vous avez gagné <br/>
 			{{> chat}}
 		{{else}}
@@ -35,7 +37,8 @@
 <template name="game">
 
 	<div class ="blockPlayer2 col-xs-6 " style ='height:{{heightPlayerBlock}}px;'>
-		<div class="col-xs-3 catPhotoPlayer2" style='top:{{topPhotoCat}}px' ><img src="./img/{{ennemyCat.img}}.jpg"  style='top:{{topPhotoCat}}px' /> <br/> <progress style ="width:100%" value={{ennemyCat.hp}} max="100"></progress><br /> </div>%	
+		<div class="col-xs-3 catPhotoPlayer2 " style='top:{{topPhotoCat}}px'><img src="./img/{{myCat.img}}.jpg"  style='top:{{topPhotoCat}}px' /> <br /> <progress style ="width:100%" value={{myCat.hp}} max="100"></progress> <br /></div>		
+
 	</div>
 
 	<div class ="player2 col-xs-2" >
@@ -43,7 +46,7 @@
 	</div>
 
 	<div class ="blockPlayer1 col-xs-6 photo" style ='height:{{heightPlayerBlock}}px;' >
-		<div class="col-xs-3 catPhotoPlayer1 photo" style='top:{{topPhotoCat}}px'><img src="./img/{{myCat.img}}.jpg"  style='top:{{topPhotoCat}}px' /> <br /> <progress style ="width:100%" value={{myCat.hp}} max="100"></progress> <br /></div>		
+		<div class="col-xs-3 catPhotoPlayer1" style='top:{{topPhotoCat}}px' ><img src="./img/{{ennemyCat.img}}.jpg"  style='top:{{topPhotoCat}}px' /> <br/> <progress style ="width:100%" value={{ennemyCat.hp}} max="100"></progress><br /> </div>%		
 	</div>
 
 	<div class ="player1 col-xs-2" >

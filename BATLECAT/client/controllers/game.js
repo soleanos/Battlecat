@@ -5,7 +5,30 @@ Template.game.helpers({
 
 		var leader = myFight && myFight.leader;
 		if(leader == Meteor.userId()){
+			
+			 $( ".catPhotoPlayer1" ).animate({
+			right: "930",
+		  }, 300, function() {
+			  $( ".catPhotoPlayer1" ).animate({
+				right: "480",
+			  }, 300, function() {
+				// Animation complete.
+			  });
+		  });
+			
+		  $( ".attacks1" ).animate({
+			left: "0",
+		  }, 300, function() {
+			  
+		  });
+			
 			return true
+		}else{
+			$( ".attacks1" ).animate({
+			left: "-700",
+		  }, 300, function() {
+			  
+		  });
 		}
 
 	},
@@ -214,6 +237,15 @@ function RepercuterAttaque(e,t) {
 
 		myFigth = Fight.findOne({"player2": Meteor.userId()});
 
+		  $( ".catPhotoPlayer2" ).animate({
+			left: "+=400",
+		  }, 300, function() {
+			  $( ".catPhotoPlayer2" ).animate({
+				left: "-=400",
+			  }, 300, function() {
+				// Animation complete.
+			  });
+		  });
 
 		if(myFigth){
 				catPlayer2 = myFigth && myFigth.catPlayer2;
