@@ -44,14 +44,14 @@ Template.updateBd.helpers({
     var breed = Breed.find().fetch();
 		if(breed.length==0){
 			
-			Breed.insert({nameBreed:"Grumpy",attacks:[{nom:"Griffure de la flemme",dommages:5},{nom:"Balayette de grumpy",dommages:7},{nom:"Rage de grumpy",dommages:7}]})
-			Breed.insert({nameBreed:"Persan",attacks:[{nom:"Petite griffure persane",dommages:5},{nom:"Souffle persan",dommages:7},{nom:"Ruade",dommages:7}]})
-			Breed.insert({nameBreed:"Dieu chat",attacks:[{nom:"Knackie purée",dommages:25},{nom:"Rayon laser du dieu de la mort ",dommages:99},{nom:"Vindicte des dieux",dommages:69}]})
-			Breed.insert({nameBreed:"Exotic",attacks:[{nom:"Coup de patte violent",dommages:5},{nom:"Charge déchainée",dommages:7},{nom:"Coup de langue",dommages:7}]})
-			Breed.insert({nameBreed:"Himalayen",attacks:[{nom:"Rage des montagnes",dommages:5},{nom:"Coup de patte",dommages:7},{nom:"Lechouille",dommages:7}]})
-			Breed.insert({nameBreed:"Chat lion",attacks:[{nom:"Griffure du lion sauvage",dommages:5},{nom:"Coup de patte de la savane",dommages:7},{nom:"Morsure",dommages:7}]})
-			Breed.insert({nameBreed:"Chat licorne",attacks:[{nom:"Attaque arc en ciel",dommages:5},{nom:"Coup de corne",dommages:7},{nom:"LICOOOOOOOORNE !! ",dommages:7}]})
-			Breed.insert({nameBreed:"Chavant fou",attacks:[{nom:"Jet d'éprouvette",dommages:5},{nom:"Explosion !!!!",dommages:7},{nom:"Attaque du scientifique fou",dommages:7}]})
+			Breed.insert({nameBreed:"Grumpy",attacks:[{nom:"Griffure de la flemme",dommages:5,type:1},{nom:"Balayette de grumpy",dommages:7,type:1},{nom:"Rage de grumpy",dommages:7,type:1}]})
+			Breed.insert({nameBreed:"Persan",attacks:[{nom:"Petite griffure persane",dommages:5,type:1},{nom:"Souffle persan",dommages:7,type:1},{nom:"Ruade",dommages:7,type:1}]})
+			Breed.insert({nameBreed:"Dieu chat",attacks:[{nom:"Knackie purée",dommages:25,type:1},{nom:"Rayon laser du dieu de la mort ",dommages:99,type:1},{nom:"Vindicte des dieux",dommages:69,type:1}]})
+			Breed.insert({nameBreed:"Exotic",attacks:[{nom:"Coup de patte violent",dommages:5,type:1},{nom:"Charge déchainée",dommages:7,type:1},{nom:"Coup de langue",dommages:7,type:1}]})
+			Breed.insert({nameBreed:"Himalayen",attacks:[{nom:"Rage des montagnes",dommages:5,type:1},{nom:"Coup de patte",dommages:7,type:1},{nom:"Lechouille",dommages:7,type:1}]})
+			Breed.insert({nameBreed:"Chat lion",attacks:[{nom:"Griffure du lion sauvage",dommages:5,type:1},{nom:"Coup de patte de la savane",dommages:7,type:1},{nom:"Morsure",dommages:7,type:1}]})
+			Breed.insert({nameBreed:"Chat licorne",attacks:[{nom:"Attaque arc en ciel",dommages:5,type:1},{nom:"Coup de corne",dommages:7,type:1},{nom:"LICOOOOOOOORNE !! ",dommages:7,type:1}]})
+			Breed.insert({nameBreed:"Chavant fou",attacks:[{nom:"Jet d'éprouvette",dommages:5,type:1},{nom:"Explosion !!!!",dommages:7,type:1},{nom:"Bouclier supersonic",dommages:4,type:2}]})
 
 			return "Les races de chats ont étés correctement insérés";
 			

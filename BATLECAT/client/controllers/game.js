@@ -221,7 +221,8 @@ Template.game.helpers({
 			
 			Meteor.users.update({_id: Meteor.userId()},{$set:{"inFight":0}});
 			Router.go('/');
-        }
+      },
+      
 
 });
 
@@ -256,6 +257,7 @@ function RepercuterAttaque(e,t) {
 					if(kitty.attacks[i].nom ==$(e.target).attr("nomAttaque")){
 						dommages = kitty.attacks[i].dommages
 						attack = kitty.attacks[i].nom
+						type = kitty.attacks[i].type;
 					}
 					ennemy = myFigth.player1;
 					ennemyCat = Cats.findOne({"_id": myFigth.catPlayer1});
@@ -272,39 +274,78 @@ function RepercuterAttaque(e,t) {
 					if(kitty.attacks[i].nom == $(e.target).attr("nomAttaque")){
 						dommages = kitty.attacks[i].dommages
 						attack = kitty.attacks[i].nom
+						type = kitty.attacks[i].type;
 					}
 					ennemy = myFigth.player2;
 					ennemyCat = Cats.findOne({"_id": myFigth.catPlayer2});
 				}
 		}
+		
+		
 
 		if(dommages != null){
-		myEnnemy = Meteor.users.findOne({"_id":ennemy});
-		Fight.update({_id: myFigth._id},{$set:{"leader":ennemy}});
+			
+		if(type == 2){
+			
+			if(kitty.effect){
+				Cats.update({_id: kitty._id },{$set:{"effect":{nom:attack,valor:dommages,nbTour:kitty.effect.nbTour+2,type:2}}});
+				messageCombat = kitty.name+ " reforme son bouclier '"+attack+"' qui le protège de  "+dommages+" points de dégats pendant maintenant "+kitty.effect.nbTour+" tours";
+			}else{
+				Cats.update({_id: kitty._id },{$set:{"effect":{nom:attack,valor:dommages,nbTour:2,type:2}}});
+				messageCombat = kitty.name+ " lance '"+attack+"' qui le protège de  "+dommages+" points de dégats pendant deux tours";
+			}
+			
+			
+			Fight.update({_id: myFigth._id},{$set:{"leader":ennemy}})
+			
+			
+		}else if (type == 1){
+			
+			
+			myEnnemy = Meteor.users.findOne({"_id":ennemy});
+			Fight.update({_id: myFigth._id},{$set:{"leader":ennemy}});
+	
+			myKittyStrength = kitty.strength;
+			ennemyResistance = ennemyCat.resistance;
+			ennemyAgility = ennemyCat.agility;
+			reduction = ennemyResistance/2;
+			moreDommages = myKittyStrength/2;
+			
 
-		myKittyStrength = kitty.strength;
-		ennemyResistance = ennemyCat.resistance;
-		ennemyAgility = ennemyCat.agility;
-		reduction = ennemyResistance/2;
-		moreDommages = myKittyStrength/2;
-		finalDommages = dommages+moreDommages-reduction
+			if(ennemyCat.effect){
+				reduction = reduction + ennemyCat.effect.valor
+				
+				if( ennemyCat.effect.nbTour == 1){
+					Cats.update({_id: ennemyCat._id },{$set:{"effect":""}});
+					console.log("1")
+				}else{
+					Cats.update({_id: ennemyCat._id },{$set:{"effect":{nom:ennemyCat.effect.nom,valor:ennemyCat.effect.valor,nbTour:ennemyCat.effect.nbTour-1,type:2}}});
+					console.log(ennemyCat.effect.nbTour);	
+				}
+				//~ alert("le chat ennemi a un bouclier qui reduit votre atatque de  "+ennemyCat.effect.valor+ " !!!");
+			
+			}
 
+			finalDommages = dommages+moreDommages-reduction
+		
+			messageCombat = kitty.name+ " lance l'attaque '"+attack+"' qui fait "+finalDommages+" points de dégats à "+ennemyCat.name+" ( réduits "+reduction+")";
+			newHps = ennemyCat.hp-finalDommages
+			if(newHps<0){
+				newHps = 0;
+				Fight.update({_id: myFigth._id},{$set:{"winner":Meteor.userId()}});
+				Fight.update({_id: myFigth._id},{$set:{"stateFight":"end"}});
 
-		messageCombat = kitty.name+ " lance l'attaque '"+attack+"' qui fait "+finalDommages+" points de dégats à "+ennemyCat.name+" ( réduits "+reduction+")";
-		newHps = ennemyCat.hp-finalDommages
-		if(newHps<0){
-			newHps = 0;
-			Fight.update({_id: myFigth._id},{$set:{"winner":Meteor.userId()}});
-			Fight.update({_id: myFigth._id},{$set:{"stateFight":"end"}});
+				giveMoneyToPlayer(myFigth,Meteor.user(),50)
+				//~ giveMoneyToPlayer(myFigth,myEnnemy,10)
 
-			giveMoneyToPlayer(myFigth,Meteor.user(),50)
-			//~ giveMoneyToPlayer(myFigth,myEnnemy,10)
+				giveXpToCat(myFigth,kitty,100);
+				giveXpToCat(myFigth,ennemyCat,20);
+			}
 
-			giveXpToCat(myFigth,kitty,100);
-			giveXpToCat(myFigth,ennemyCat,20);
+			Cats.update({_id: ennemyCat._id },{$set:{"hp":newHps}});
+			
 		}
-
-		Cats.update({_id: ennemyCat._id },{$set:{"hp":newHps}});
+		
 		FightLogs.insert( {fightId:myFigth._id,player1:myFigth.player1,player2:myFigth.player2,message: messageCombat} )
 
 		}else{
